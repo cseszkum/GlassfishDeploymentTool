@@ -1,0 +1,11 @@
+create-jdbc-resource
+http://docs.oracle.com/cd/E19776-01/820-4497/6nfv6jlj0/index.html
+
+-H [host] -p [port] -u [user] --passwordfile [pwd.txt] --connectionpoolid []  --property [user=dbuser:password=dbpassword:url="jdbc:oracle\:thin\:@localhost\:1521\:ORCL"]  jndi_name
+
+
+
+delete-jdbc-resource
+http://docs.oracle.com/cd/E19776-01/820-4497/6nfv6jljd/index.html
+
+-H [host] -p [port] -u [user] --passwordfile [pwd.txt] jndi_name

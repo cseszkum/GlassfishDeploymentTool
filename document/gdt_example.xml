@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gdt xmlns:urnData="org.moooz.data" xmlns:urnServers="org.moooz.servers">
+    <parameters>
+        <name>GDT Example</name>
+        <lastmodified>2014.08.21</lastmodified>
+        <comment />
+        <asadminpath>c:\Toolz\glassfish-3.1.2.2\glassfish\bin\asadmin.bat</asadminpath>
+    </parameters>
+    <servers>
+        <server id="1" skip="true|false" index="0">
+            <target>
+                <host>localhost</host>
+                <port>4849</port>
+                <user>admin</user>
+                <password>plain_txt_password</password>
+            </target>
+            <commands>
+                <command id="cmd1" skip="true|false" index="0">
+                    <domains>
+                        <domain id="d1" skip="true|false" action="create|restart|drop">
+                            <applications>
+                                <application id="" skip="true|false" action="deploy|reload|undeploy|deployAndReload" />
+                            </applications>
+                        </domain>
+                    </domains>
+                    <connections>
+                        <connection id="1" skip="true|false" action="create|recreate|drop" />
+                    </connections>
+                    <pools>
+                        <pool id="1" skip="true|false" action="create|recreate|drop" />
+                    </pools>
+                </command>
+            </commands>
+        </server>
+    </servers>
+    <data>
+        <domains>
+            <domain id="d1">
+                <name>domain1</name>
+            </domain>
+        </domains>
+        <applications>
+            <application id="1">
+                <name></name>
+                <deploy>
+                    <contextname></contextname>
+                    <deployobject>d:\path_to_war\app_name.war</deployobject>
+                </deploy>
+            </application>
+        </applications>
+        <connections>
+            <connection id="1">
+                <name>C1</name>
+                <poolid>P1</poolid>
+            </connection>
+        </connections>
+        <pools>
+            <pool id="1">
+                <jndiName>P1</jndiName>
+                <properties>
+                    <property name="username" value="XXX" />
+                    <property name="pssword" value="XXX" />
+                </properties>
+            </pool>
+        </pools>
+    </data>
+</gdt>

@@ -1,0 +1,74 @@
+package com.seacon.gdt.xml.objects.servers;
+
+import com.seacon.gdt.utility.Utility;
+import com.seacon.gdt.xml.Constants;
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlType;
+
+/**
+ *
+ * @author Peter
+ */
+@XmlType(name = Constants.application, namespace = "org.moooz.servers")
+public class Application implements Serializable {
+    public static final long serialVersionUID = 2015013113L;
+
+    private String id;
+    private String skip;
+    private String action;
+    
+    public Application() {
+        this.id = "";
+        this.skip = "";
+        this.action = "";
+    }
+
+    public Boolean isSkip() {
+        return Utility.convertStrToBoolean(this.skip);
+    }
+    
+    public Boolean isDeploy() {
+        return (this.action != null && "deploy".equals(this.action.toLowerCase()));
+    }
+
+    public Boolean isRestart() {
+        return (this.action != null && "restart".equals(this.action.toLowerCase()));
+    }
+    
+    public Boolean isUndeploy() {
+        return (this.action != null && "undeploy".equals(this.action.toLowerCase()));
+    }
+    
+    public Boolean isDeployAndReload() {
+        return (this.action != null && "deployandreload".equals(this.action.toLowerCase()));
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    @XmlAttribute
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getSkip() {
+        return skip;
+    }
+
+    @XmlAttribute
+    public void setSkip(String skip) {
+        this.skip = skip;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    @XmlAttribute
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+}

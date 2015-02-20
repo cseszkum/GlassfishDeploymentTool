@@ -1,0 +1,5 @@
+XSD generator url:
+http://www.freeformatter.com/xsd-generator.html
+
+
+http://stackoverflow.com/questions/6815579/validating-xml-against-xsd
