@@ -3,3 +3,26 @@ http://www.freeformatter.com/xsd-generator.html
 
 
 http://stackoverflow.com/questions/6815579/validating-xml-against-xsd
+
+
+
+C:\Toolz\glassfish-4.1\bin\asadmin.bat --host localhost --port 8686 enable-secure-admin
+
+
+C:\Toolz\glassfish-4.1\bin\asadmin.bat --host localhost --port 8686 disable-secure-admin
+
+
+asadmin --host [host] --port [port] disable-secure-admin
+
+	
+javax.sql.ConnectionPoolDataSource
+
+C:\Toolz\glassfish-4.1\bin\asadmin.bat -H localhost -p 4848 -u admin --passwordfile C:/Temp/password.txt create-jdbc-resource --connectionpoolid DerbyPool --property "username=XXX:host=localhost:pssword=XXX" gdtExamplePool
+C:\Toolz\glassfish-4.1\bin\asadmin.bat -H localhost -p 4848 -u admin --passwordfile C:/Temp/password.txt create-jdbc-resource gdtExamplePool --property "username=XXX:host=localhost:pssword=XXX" 
+
+
+C:\Toolz\glassfish-4.1\bin\asadmin.bat -H localhost -p 8686 -u admin --passwordfile "C:/Users/Peter/Documents/GitHub/GlassfishDeploymentTool/pwd4Test.txt" delete-jdbc-connection-pool gdtExamplePool 
+
+C:\Toolz\glassfish-4.1\bin\asadmin.bat -H localhost -p 4848 -u admin --passwordfile "C:/Users/Peter/Documents/GitHub/GlassfishDeploymentTool/pwd4Test.txt" list-jdbc-resources
+
+C:\Toolz\glassfish-4.1\bin\asadmin.bat -H localhost -p 4848 -u admin --passwordfile "C:/Users/Peter/Documents/GitHub/GlassfishDeploymentTool/pwd4Test.txt" version

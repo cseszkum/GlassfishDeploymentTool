@@ -12,6 +12,7 @@ import com.seacon.gdt.xml.objects.servers.Target;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.util.Collections;
 import javax.xml.XMLConstants;
 import javax.xml.transform.stream.StreamSource;
@@ -110,7 +111,7 @@ public class Gdt {
         GdtLog.info("ASADMIN path: " + this.gdt.getParameters().getAsadminpath());
     }
 
-    private boolean isServerRunning(String asadminPath, Target targetServer) throws IOException {
+    private boolean isServerRunning(String asadminPath, Target targetServer) throws IOException, URISyntaxException {
         com.seacon.gdt.runtime.server.Version cmdVer = new Version(asadminPath, targetServer);
         cmdVer.execute();
         Boolean retVal = cmdVer.isServerRunning();

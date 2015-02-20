@@ -3,33 +3,25 @@ package com.seacon.gdt.xml.objects.servers;
 import com.seacon.gdt.utility.Utility;
 import com.seacon.gdt.xml.Constants;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author Peter
  */
-@XmlType(name = Constants.domain, namespace = "org.moooz.servers")
-public class Domain implements Serializable {
-    public static final long serialVersionUID = 2015013112L;
+@XmlType(name = Constants.connection, namespace = "org.moooz.servers")
+public class Jdbcresource implements Serializable {
+    public static final long serialVersionUID = 2015013111L;
     
     private String id;
     private String skip;
     private String action;
-
-    private List<Application> applications;
     
-    public Domain() {
+    public Jdbcresource() {
         this.id = "";
         this.skip = "";
         this.action = "";
-        
-        this.applications = new ArrayList<Application>();
     }
 
     public Boolean isSkip() {
@@ -40,20 +32,12 @@ public class Domain implements Serializable {
         return (this.action != null && "create".equals(this.action.toLowerCase()));
     }
 
-    public Boolean isRestart() {
-        return (this.action != null && "restart".equals(this.action.toLowerCase()));
+    public Boolean isRecreate() {
+        return (this.action != null && "recreate".equals(this.action.toLowerCase()));
     }
 
     public Boolean isDrop() {
         return (this.action != null && "drop".equals(this.action.toLowerCase()));
-    }
-
-    public Boolean isStart() {
-        return (this.action != null && "start".equals(this.action.toLowerCase()));
-    }
-
-    public Boolean isStop() {
-        return (this.action != null && "stop".equals(this.action.toLowerCase()));
     }
     
     public String getId() {
@@ -83,15 +67,6 @@ public class Domain implements Serializable {
         this.action = action;
     }
 
-    public List<Application> getApplications() {
-        return applications;
-    }
 
-    @XmlElementWrapper
-    @XmlElement(name="application")
-    public void setApplications(List<Application> applications) {
-        this.applications = applications;
-    }
-    
     
 }

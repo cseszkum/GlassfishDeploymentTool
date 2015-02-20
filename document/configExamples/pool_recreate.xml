@@ -3,7 +3,7 @@
     <parameters>
         <name>GDT Example - Create pool</name>
         <lastmodified>2015.02.16</lastmodified>
-        <comment>c:\Toolz\glassfish-3.1.2.2\glassfish\bin\asadmin.bat C:\Toolz\glassfish-4.1\bin\asadmin.bat</comment>
+        <comment>create and +1 attribue - c:\Toolz\glassfish-3.1.2.2\glassfish\bin\asadmin.bat C:\Toolz\glassfish-4.1\bin\asadmin.bat</comment>
         <asadminpath>C:\Toolz\glassfish-4.1\bin\asadmin.bat</asadminpath>
     </parameters>
     <servers>
@@ -17,7 +17,7 @@
             <commands>
                 <command id="cmd1" skip="false" index="0">
                     <pools>
-                        <pool id="1" skip="false" action="drop" />
+                        <pool id="1" skip="false" action="recreate" />
                     </pools>
                 </command>
             </commands>
@@ -27,10 +27,13 @@
         <pools>
             <pool id="1">
                 <jndiName>gdtExamplePool</jndiName>
+                <datasourceclassname>org.apache.derby.jdbc.ClientDataSource</datasourceclassname>
+                <restype>javax.sql.DataSource</restype>
                 <properties>
                     <property name="username" value="XXX" />
                     <property name="host" value="localhost" />
-                    <property name="pssword" value="XXX" />
+                    <property name="password" value="XXX" />
+                    <property name="paramX" value="paramX" />
                 </properties>
             </pool>
         </pools>

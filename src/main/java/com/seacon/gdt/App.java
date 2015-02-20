@@ -9,10 +9,12 @@ import java.net.URISyntaxException;
 /**
  * Glassfish Deployment Tool
  * 
- * "C:/Users/Peter/Google Drive/NetbeansProjects/GlassfishDeploymentTool/document/gdt_example.xml"
- * "C:/Users/Peter/Google Drive/NetbeansProjects/GlassfishDeploymentTool/document/configExamples/pool_create.xml"
- * "C:/Users/Peter/Google Drive/NetbeansProjects/GlassfishDeploymentTool/document/configExamples/pool_drop.xml"
+ * Home:
+ * "C:/Users/Peter/Documents/GitHub/GlassfishDeploymentTool/document/gdt_example.xml"
+ * "C:/Users/Peter/Documents/GitHub/GlassfishDeploymentTool/document/configExamples/pool_create.xml"
+ * "C:/Users/Peter/Documents/GitHub/GlassfishDeploymentTool/document/configExamples/pool_drop.xml"
  * 
+ * Work:
  * "e:/GoogleDrive/NetbeansProjects/GlassfishDeploymentTool/document/gdt_example.xml"
  * "e:/GoogleDrive/NetbeansProjects/GlassfishDeploymentTool/document/configExamples/pool_create.xml"
  * "e:/GoogleDrive/NetbeansProjects/GlassfishDeploymentTool/document/configExamples/pool_drop.xml"

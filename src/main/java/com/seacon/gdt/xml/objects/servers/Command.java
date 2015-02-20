@@ -24,7 +24,7 @@ public class Command implements Serializable {
     private String index;
     
     private List<Domain> domains;
-    private List<Connection> connections;
+    private List<Jdbcresource> jdbcresources;
     private List<Pool> pools;
 
     public Command() {
@@ -33,7 +33,7 @@ public class Command implements Serializable {
         this.index = "";
         
         this.domains = new ArrayList<Domain>();
-        this.connections = new ArrayList<Connection>();
+        this.jdbcresources = new ArrayList<Jdbcresource>();
         this.pools = new ArrayList<Pool>();
     }
 
@@ -85,14 +85,14 @@ public class Command implements Serializable {
         this.domains = domains;
     }
 
-    public List<Connection> getConnections() {
-        return connections;
+    public List<Jdbcresource> getJdbcresources() {
+        return jdbcresources;
     }
 
     @XmlElementWrapper
     @XmlElement(name = "connection")
-    public void setConnections(List<Connection> connections) {
-        this.connections = connections;
+    public void setJdbcresources(List<Jdbcresource> jdbcresources) {
+        this.jdbcresources = jdbcresources;
     }
 
     public List<Pool> getPools() {

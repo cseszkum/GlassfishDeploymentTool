@@ -41,7 +41,6 @@ public class Pool implements Serializable {
         Boolean retVal = false;
         
         com.seacon.gdt.runtime.pool.List listCmd = new com.seacon.gdt.runtime.pool.List(asadminPath, targetServer);
-        listCmd.setParameters(this);
         listCmd.execute();
         
         for (int i = 0; i < listCmd.getOutputLines().size() && retVal == false; i++) {

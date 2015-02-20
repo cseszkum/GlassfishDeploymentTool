@@ -17,15 +17,15 @@
             <commands>
                 <command id="cmd1" skip="true|false" index="0">
                     <domains>
-                        <domain id="d1" skip="true|false" action="create|restart|drop">
+                        <domain id="d1" skip="true|false" action="create|restart|drop|start|stop">
                             <applications>
                                 <application id="" skip="true|false" action="deploy|reload|undeploy|deployAndReload" />
                             </applications>
                         </domain>
                     </domains>
-                    <connections>
-                        <connection id="1" skip="true|false" action="create|recreate|drop" />
-                    </connections>
+                    <jdbcresources>
+                        <jdbcresource id="1" skip="true|false" action="create|recreate|drop" />
+                    </jdbcresources>
                     <pools>
                         <pool id="1" skip="true|false" action="create|recreate|drop" />
                     </pools>
@@ -48,12 +48,12 @@
                 </deploy>
             </application>
         </applications>
-        <connections>
-            <connection id="1">
+        <jdbcresources>
+            <jdbcresource id="1">
                 <name>C1</name>
                 <poolid>P1</poolid>
-            </connection>
-        </connections>
+            </jdbcresource>
+        </jdbcresources>
         <pools>
             <pool id="1">
                 <jndiName>P1</jndiName>

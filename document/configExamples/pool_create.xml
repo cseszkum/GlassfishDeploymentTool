@@ -9,10 +9,10 @@
     <servers>
         <server id="1" skip="false" index="0">
             <target>
-                <host>seafleet.seacon.hu</host>
+                <host>localhost</host>
                 <port>4848</port>
                 <user>admin</user>
-                <password>Seafleet12345</password>
+                <password></password>
             </target>
             <commands>
                 <command id="cmd1" skip="false" index="0">
@@ -32,7 +32,7 @@
                 <properties>
                     <property name="username" value="XXX" />
                     <property name="host" value="localhost" />
-                    <property name="pssword" value="XXX" />
+                    <property name="password" value="XXX" />
                 </properties>
             </pool>
         </pools>
