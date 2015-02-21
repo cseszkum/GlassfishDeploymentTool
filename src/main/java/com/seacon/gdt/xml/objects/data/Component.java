@@ -11,21 +11,25 @@ import javax.xml.bind.annotation.XmlType;
  * @author Peter
  */
 @XmlType(name = Constants.application, namespace = "org.moooz.data")
-public class Application implements Serializable {
+public class Component implements Serializable {
     public static final long serialVersionUID = 20150131223L;
     
     private String id;
+    private String ctype;
+    private String scappid;
     
     private String name;
+    private String type;
     private Deploy deploy;
-    private String restart;
 
-    public Application() {
+    public Component() {
         this.id = "";
+        this.ctype = "";
+        this.scappid = "";
 
         this.name = "";
+        this.type = "";
         this.deploy = new Deploy();
-        this.restart = "";
     }
     
     public Boolean isExists(String asadminPath, Target targetServer) throws IOException, URISyntaxException {
@@ -52,6 +56,33 @@ public class Application implements Serializable {
         this.id = id;
     }
 
+    public String getCtype() {
+        return ctype;
+    }
+
+    @XmlAttribute
+    public void setCtype(String ctype) {
+        this.ctype = ctype;
+    }
+
+    public String getScappid() {
+        return scappid;
+    }
+    
+    @XmlAttribute
+    public void setScappid(String scappid) {
+        this.scappid = scappid;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    @XmlElement
+    public void setType(String type) {
+        this.type = type;
+    }
+    
     public String getName() {
         return name;
     }

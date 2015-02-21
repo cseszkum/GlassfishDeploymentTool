@@ -4,7 +4,7 @@ import com.seacon.gdt.runtime.pool.Create;
 import com.seacon.gdt.runtime.pool.Drop;
 import com.seacon.gdt.utility.GdtLog;
 import com.seacon.gdt.xml.objects.Data;
-import com.seacon.gdt.xml.objects.servers.Application;
+import com.seacon.gdt.xml.objects.servers.Component;
 import com.seacon.gdt.xml.objects.servers.Command;
 import com.seacon.gdt.xml.objects.servers.Jdbcresource;
 import com.seacon.gdt.xml.objects.servers.Domain;
@@ -159,12 +159,12 @@ class CommandHandler {
         }
     }
     
-    private void handleApplications(List<Application> appssInCommand, com.seacon.gdt.xml.objects.data.Domain domainData, Data data) throws Exception {
-        for (com.seacon.gdt.xml.objects.servers.Application appCmd : appssInCommand) {
+    private void handleApplications(List<Component> appssInCommand, com.seacon.gdt.xml.objects.data.Domain domainData, Data data) throws Exception {
+        for (com.seacon.gdt.xml.objects.servers.Component appCmd : appssInCommand) {
             if (appCmd.isSkip()) {
                 GdtLog.info("SKIP application command. id: '" + appCmd.getId() + "'");
             } else {
-                com.seacon.gdt.xml.objects.data.Application appData = getApplicationDataById(appCmd.getId(), data);
+                com.seacon.gdt.xml.objects.data.Component appData = getApplicationDataById(appCmd.getId(), data);
 
                 GdtLog.info("Handle application command. id: '" + appData.getId() + "' - name: " + appData.getName());
                 
@@ -218,8 +218,8 @@ class CommandHandler {
         return retVal;
     }
 
-    private com.seacon.gdt.xml.objects.data.Application getApplicationDataById(String id, Data data) throws Exception {
-        com.seacon.gdt.xml.objects.data.Application retVal = null;
+    private com.seacon.gdt.xml.objects.data.Component getApplicationDataById(String id, Data data) throws Exception {
+        com.seacon.gdt.xml.objects.data.Component retVal = null;
 
         for (int i = 0; i < data.getApplications().size() && retVal == null; i++) {
             if (data.getApplications().get(i).getId().equals(id)) {

@@ -1,7 +1,7 @@
 package com.seacon.gdt.xml.objects;
 
 import com.seacon.gdt.xml.Constants;
-import com.seacon.gdt.xml.objects.data.Application;
+import com.seacon.gdt.xml.objects.data.Component;
 import com.seacon.gdt.xml.objects.data.Jdbcresource;
 import com.seacon.gdt.xml.objects.data.Domain;
 import com.seacon.gdt.xml.objects.data.Pool;
@@ -22,13 +22,13 @@ public class Data implements Serializable {
     public static final long serialVersionUID = 20150129422L;
     
     private List<Domain> domains;
-    private List<Application> applications;
+    private List<Component> components;
     private List<Jdbcresource> jdbcresources;
     private List<Pool> pools;
     
     public Data() {
         this.domains = new ArrayList<Domain>();
-        this.applications = new ArrayList<Application>();
+        this.components = new ArrayList<Component>();
         this.jdbcresources = new ArrayList<Jdbcresource>();
         this.pools = new ArrayList<Pool>();
     }
@@ -43,14 +43,14 @@ public class Data implements Serializable {
         this.domains = domains;
     }
 
-    public List<Application> getApplications() {
-        return applications;
+    public List<Component> getComponents() {
+        return components;
     }
 
     @XmlElementWrapper
-    @XmlElement(name = "application")
-    public void setApplications(List<Application> applications) {
-        this.applications = applications;
+    @XmlElement(name = "component")
+    public void setComponents(List<Component> components) {
+        this.components = components;
     }
 
     public List<Jdbcresource> getJdbcresources() {

@@ -22,14 +22,14 @@ public class Domain implements Serializable {
     private String skip;
     private String action;
 
-    private List<Application> applications;
+    private List<Component> components;
     
     public Domain() {
         this.id = "";
         this.skip = "";
         this.action = "";
         
-        this.applications = new ArrayList<Application>();
+        this.components = new ArrayList<Component>();
     }
 
     public Boolean isSkip() {
@@ -83,14 +83,14 @@ public class Domain implements Serializable {
         this.action = action;
     }
 
-    public List<Application> getApplications() {
-        return applications;
+    public List<Component> getComponents() {
+        return components;
     }
 
     @XmlElementWrapper
-    @XmlElement(name="application")
-    public void setApplications(List<Application> applications) {
-        this.applications = applications;
+    @XmlElement(name="component")
+    public void setComponents(List<Component> components) {
+        this.components = components;
     }
     
     

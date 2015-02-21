@@ -9,3 +9,25 @@ delete-jdbc-resource
 http://docs.oracle.com/cd/E19776-01/820-4497/6nfv6jljd/index.html
 
 -H [host] -p [port] -u [user] --passwordfile [pwd.txt] jndi_name
+
+
+App type and commands:
+
+* APPLICATION
+- List          http://docs.oracle.com/cd/E19798-01/821-1758/list-applications-1/index.html         list-applications       [type]
+- Deploy        http://docs.oracle.com/cd/E19798-01/821-1758/deploy-1/index.html                    deploy                  filewithpath [name] [properties]  [contextroot] [type]
+- Redeploy      http://docs.oracle.com/cd/E19798-01/821-1758/redeploy-1/index.html                  redeploy                name
+- Undeploy      http://docs.oracle.com/cd/E19798-01/821-1758/undeploy-1/index.html                  undeploy                name
+
+* COMPONENT
+- List          http://docs.oracle.com/cd/E19798-01/821-1758/list-components-1/index.html           list-components         [type]
+- Deploy        http://docs.oracle.com/cd/E19798-01/821-1758/deploy-1/index.html                    deploy                  filewithpath [name] [properties]  [contextroot] [type]
+- Redeploy      http://docs.oracle.com/cd/E19798-01/821-1758/redeploy-1/index.html                  redeploy                name
+- Undeploy      http://docs.oracle.com/cd/E19798-01/821-1758/undeploy-1/index.html                  undeploy                name
+
+* SUBCOMPONENT
+- List          http://docs.oracle.com/cd/E19798-01/821-1758/list-sub-components-1/index.html       list-sub-components     name, [appname], [type]
+- Showstatus    http://docs.oracle.com/cd/E19798-01/821-1758/show-component-status-1/index.html     show-component-status   name
+- Deploy        http://docs.oracle.com/cd/E19798-01/821-1758/deploy-1/index.html                    deploy                  filewithpath [name] [properties]  [contextroot] [type]
+- Redeploy      http://docs.oracle.com/cd/E19798-01/821-1758/redeploy-1/index.html                  redeploy                name
+- Undeploy      http://docs.oracle.com/cd/E19798-01/821-1758/undeploy-1/index.html                  undeploy                name

@@ -21,6 +21,7 @@ public class Constants {
     public static final String command = "command";
     
     public static final String deploy = "deploy";
+    public static final String subcomponent = "subcomponent";
     public static final String property = "property";
 
 }

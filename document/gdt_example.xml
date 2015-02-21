@@ -18,9 +18,10 @@
                 <command id="cmd1" skip="true|false" index="0">
                     <domains>
                         <domain id="d1" skip="true|false" action="create|restart|drop|start|stop">
-                            <applications>
-                                <application id="" skip="true|false" action="deploy|reload|undeploy|deployAndReload" />
-                            </applications>
+                            <components>
+                                <component id="" ctype="application|component|subcomponent" skip="true|false"
+                                           action="deploy|reload|undeploy|redeploy" />
+                            </components>
                         </domain>
                     </domains>
                     <jdbcresources>
@@ -39,15 +40,21 @@
                 <name>domain1</name>
             </domain>
         </domains>
-        <applications>
-            <application id="1">
+        <components>
+            <component id="1" ctype="application|component|subcomponent" scappid="">
                 <name></name>
+                <type></type>
                 <deploy>
-                    <contextname></contextname>
-                    <deployobject>d:\path_to_war\app_name.war</deployobject>
+                    <name></name>
+                    <type></type>
+                    <contextroot></contextroot>
+                    <path>d:\path_to_war\app_name.war</path>
+                    <properties>
+                         <property name="username" value="XXX" />
+                    </properties>
                 </deploy>
-            </application>
-        </applications>
+            </component>
+        </components>
         <jdbcresources>
             <jdbcresource id="1">
                 <name>C1</name>
