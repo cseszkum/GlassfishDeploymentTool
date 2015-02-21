@@ -1,6 +1,5 @@
-package com.seacon.gdt.runtime.application;
+package com.seacon.gdt.runtime.component;
 
-import com.seacon.gdt.runtime.domain.*;
 import com.seacon.gdt.runtime.AsadminCommandExecuter;
 import com.seacon.gdt.utility.PasswordFileHandler;
 import com.seacon.gdt.xml.objects.servers.Target;
@@ -11,15 +10,14 @@ import java.net.URISyntaxException;
  *
  * @author varsanyi.peter
  */
-public class List extends AsadminCommandExecuter {
+public class Redeploy extends AsadminCommandExecuter {
 
-    public List(String asadminPath, Target targetServer) throws URISyntaxException {
+    public Redeploy(String asadminPath, Target targetServer) throws URISyntaxException {
         super(asadminPath, targetServer);
-        setProcessInfo("List applications");
-        setParameters();
+        setProcessInfo("Redeploy component");
     }
 
-    private void setParameters() throws URISyntaxException {
+    public void setParameters(com.seacon.gdt.xml.objects.data.Component componentData, com.seacon.gdt.xml.objects.data.Component parentAppData) throws URISyntaxException, Exception {
         getParameters().add("-H");
         getParameters().add(getTargetServer().getHost());
         getParameters().add("-p");
@@ -29,9 +27,9 @@ public class List extends AsadminCommandExecuter {
         getParameters().add("--passwordfile");
         getParameters().add("\"" + PasswordFileHandler.getPasswordFilePath() + "\"");
 
-        getParameters().add("list-applications");
+        getParameters().add("redeploy");
         
-        ..
+        getParameters().add(componentData.getName());
     }
 
 }

@@ -16,13 +16,11 @@ public class Component implements Serializable {
 
     private String id;
     private String skip;
-    private String ctype;
     private String action;
     
     public Component() {
         this.id = "";
         this.skip = "";
-        this.ctype = "";
         this.action = "";
     }
 
@@ -45,18 +43,6 @@ public class Component implements Serializable {
     public Boolean isRedeploy() {
         return (this.action != null && "redeploy".equals(this.action.toLowerCase()));
     }
-
-    public Boolean isTypeApplication() {
-        return (this.ctype != null && "application".equals(this.ctype.toLowerCase()));
-    }    
-    
-    public Boolean isTypeComponent() {
-        return (this.ctype != null && "component".equals(this.ctype.toLowerCase()));
-    }    
-
-    public Boolean isTypeSubcomponent() {
-        return (this.ctype != null && "subcomponent".equals(this.ctype.toLowerCase()));
-    }    
 
     public String getId() {
         return id;
@@ -83,15 +69,6 @@ public class Component implements Serializable {
     @XmlAttribute
     public void setAction(String action) {
         this.action = action;
-    }
-
-    public String getCtype() {
-        return ctype;
-    }
-
-    @XmlAttribute
-    public void setCtype(String ctype) {
-        this.ctype = ctype;
     }
 
 }

@@ -1,9 +1,14 @@
 package com.seacon.gdt.xml.objects.data;
 
+import com.seacon.gdt.utility.GdtLog;
 import com.seacon.gdt.xml.Constants;
+import com.seacon.gdt.xml.objects.servers.Target;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -20,7 +25,9 @@ public class Component implements Serializable {
     
     private String name;
     private String type;
-    private Deploy deploy;
+    private String contextroot;
+    private String path;
+    private List<Property> properties;
 
     public Component() {
         this.id = "";
@@ -29,13 +36,16 @@ public class Component implements Serializable {
 
         this.name = "";
         this.type = "";
-        this.deploy = new Deploy();
+        this.contextroot = "";
+        this.path = "";
+        this.properties = new ArrayList<Property>();
     }
     
-    public Boolean isExists(String asadminPath, Target targetServer) throws IOException, URISyntaxException {
+    public Boolean isExists(String asadminPath, Target targetServer, com.seacon.gdt.xml.objects.data.Component parentAppData) throws Exception {
         Boolean retVal = false;
         
-        com.seacon.gdt.runtime.application.List listCmd = new com.seacon.gdt.runtime.application.List(asadminPath, targetServer);
+        com.seacon.gdt.runtime.component.List listCmd = new com.seacon.gdt.runtime.component.List(asadminPath, targetServer);
+        listCmd.setParameters(this, parentAppData);
         listCmd.execute();
         
         for (int i = 0; i < listCmd.getOutputLines().size() && retVal == false; i++) {
@@ -46,6 +56,19 @@ public class Component implements Serializable {
         GdtLog.info("'" + this.name + "' is exists: " + retVal);
         return retVal;
     }  
+    
+    
+    public Boolean isTypeApplication() {
+        return (this.ctype != null && "application".equals(this.ctype.toLowerCase()));
+    }    
+    
+    public Boolean isTypeComponent() {
+        return (this.ctype != null && "component".equals(this.ctype.toLowerCase()));
+    }    
+
+    public Boolean isTypeSubcomponent() {
+        return (this.ctype != null && "subcomponent".equals(this.ctype.toLowerCase()));
+    }    
     
     public String getId() {
         return id;
@@ -92,23 +115,32 @@ public class Component implements Serializable {
         this.name = name;
     }
 
-    public Deploy getDeploy() {
-        return deploy;
+    public String getContextroot() {
+        return contextroot;
     }
 
-    @XmlElement
-    public void setDeploy(Deploy deploy) {
-        this.deploy = deploy;
+    @XmlAttribute
+    public void setContextroot(String contextroot) {
+        this.contextroot = contextroot;
     }
 
-    public String getRestart() {
-        return restart;
+    public String getPath() {
+        return path;
     }
 
-    @XmlElement
-    public void setRestart(String restart) {
-        this.restart = restart;
+    @XmlAttribute
+    public void setPath(String path) {
+        this.path = path;
     }
-    
-    
+
+    public List<Property> getProperties() {
+        return properties;
+    }
+
+    @XmlElementWrapper
+    @XmlElement(name="property")
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
+    }
+
 }

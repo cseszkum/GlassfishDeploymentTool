@@ -19,8 +19,7 @@
                     <domains>
                         <domain id="d1" skip="true|false" action="create|restart|drop|start|stop">
                             <components>
-                                <component id="" ctype="application|component|subcomponent" skip="true|false"
-                                           action="deploy|reload|undeploy|redeploy" />
+                                <component id="" skip="true|false" action="deploy|reload|undeploy|redeploy" />
                             </components>
                         </domain>
                     </domains>
@@ -44,15 +43,11 @@
             <component id="1" ctype="application|component|subcomponent" scappid="">
                 <name></name>
                 <type></type>
-                <deploy>
-                    <name></name>
-                    <type></type>
-                    <contextroot></contextroot>
-                    <path>d:\path_to_war\app_name.war</path>
-                    <properties>
-                         <property name="username" value="XXX" />
-                    </properties>
-                </deploy>
+                <contextroot></contextroot>
+                <path>d:\path_to_war\app_name.war</path>
+                <properties>
+                    <property name="username" value="XXX" />
+                </properties>
             </component>
         </components>
         <jdbcresources>
