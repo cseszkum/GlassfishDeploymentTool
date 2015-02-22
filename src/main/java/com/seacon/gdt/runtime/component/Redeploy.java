@@ -17,7 +17,7 @@ public class Redeploy extends AsadminCommandExecuter {
         setProcessInfo("Redeploy component");
     }
 
-    public void setParameters(com.seacon.gdt.xml.objects.data.Component componentData, com.seacon.gdt.xml.objects.data.Component parentAppData) throws URISyntaxException, Exception {
+    public void setParameters(com.seacon.gdt.xml.objects.data.Component componentData) throws URISyntaxException, Exception {
         getParameters().add("-H");
         getParameters().add(getTargetServer().getHost());
         getParameters().add("-p");

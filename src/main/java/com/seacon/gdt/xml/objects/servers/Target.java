@@ -17,12 +17,14 @@ public class Target implements Serializable {
     private String port;
     private String user;
     private String password;
+    private String domainsrootdir;
     
     public Target() {
         this.host = "";
         this.port = "";
         this.user = "";
         this.password = "";
+        this.domainsrootdir = "";
     }
 
     public String getHost() {
@@ -59,6 +61,15 @@ public class Target implements Serializable {
     @XmlElement
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getDomainsrootdir() {
+        return domainsrootdir;
+    }
+
+    @XmlElement
+    public void setDomainsrootdir(String domainsrootdir) {
+        this.domainsrootdir = domainsrootdir;
     }
     
     

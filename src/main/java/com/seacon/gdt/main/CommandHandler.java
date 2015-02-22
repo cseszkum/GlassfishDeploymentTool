@@ -1,5 +1,6 @@
 package com.seacon.gdt.main;
 
+import com.seacon.gdt.runtime.component.Undeploy;
 import com.seacon.gdt.runtime.pool.Create;
 import com.seacon.gdt.runtime.pool.Drop;
 import com.seacon.gdt.utility.GdtLog;
@@ -153,22 +154,51 @@ class CommandHandler {
                 }
 
                 if (domainExists) {
-                    handleApplications(domainCmd.getApplications(), domainData, data);
+                    handleApplications(domainCmd.getComponents(), domainData, data);
                 }
             }
         }
     }
     
-    private void handleApplications(List<Component> appssInCommand, com.seacon.gdt.xml.objects.data.Domain domainData, Data data) throws Exception {
-        for (com.seacon.gdt.xml.objects.servers.Component appCmd : appssInCommand) {
-            if (appCmd.isSkip()) {
-                GdtLog.info("SKIP application command. id: '" + appCmd.getId() + "'");
+    private void handleApplications(List<Component> componentsInCommand, com.seacon.gdt.xml.objects.data.Domain domainData, Data data) throws Exception {
+        for (com.seacon.gdt.xml.objects.servers.Component componentCmd : componentsInCommand) {
+            if (componentCmd.isSkip()) {
+                GdtLog.info("SKIP component command. id: '" + componentCmd.getId() + "'");
             } else {
-                com.seacon.gdt.xml.objects.data.Component appData = getApplicationDataById(appCmd.getId(), data);
+                com.seacon.gdt.xml.objects.data.Component componentData = getComponentDataById(componentCmd.getId(), data);
 
-                GdtLog.info("Handle application command. id: '" + appData.getId() + "' - name: " + appData.getName());
+                GdtLog.info("Handle component command. id: '" + componentData.getId() + "' - name: " + componentData.getName() + " - component type: " + componentData.getCtype());
                 
-                Boolean appExists = appData.isExists(asadminPath, targetServer);
+                com.seacon.gdt.xml.objects.data.Component parentAppData = null;
+                if (componentData.isTypeSubcomponent() && componentData.getScappid() != null && !componentData.getScappid().isEmpty()) {
+                    parentAppData = getComponentDataById(componentData.getScappid(), data);
+                }
+                
+                Boolean componentExists = componentData.isExists(asadminPath, targetServer, parentAppData);
+                
+                if (componentCmd.isUndeploy() && componentExists) {
+                    com.seacon.gdt.runtime.component.Undeploy componentUndeploy = new com.seacon.gdt.runtime.component.Undeploy(this.asadminPath, this.targetServer);
+                    componentUndeploy.setParameters(componentData);
+                    componentUndeploy.execute();
+                }
+                
+                if (componentCmd.isDeploy() && !componentExists) {
+                    com.seacon.gdt.runtime.component.Deploy componentDeploy = new com.seacon.gdt.runtime.component.Deploy(this.asadminPath, this.targetServer);
+                    componentDeploy.setParameters(componentData, parentAppData);
+                    componentDeploy.execute();
+                }
+                
+                if (componentCmd.isRedeploy() && componentExists) {
+                    com.seacon.gdt.runtime.component.Redeploy componentRedeploy = new com.seacon.gdt.runtime.component.Redeploy(this.asadminPath, this.targetServer);
+                    componentRedeploy.setParameters(componentData);
+                    componentRedeploy.execute();
+                }
+                
+                if (componentCmd.isReload() && componentExists) {
+                    com.seacon.gdt.runtime.component.Reload componentReload = new com.seacon.gdt.runtime.component.Reload(this.asadminPath, this.targetServer);
+                    componentReload.setParameters(componentData, domainData, targetServer.getDomainsrootdir());
+                    componentReload.execute();
+                }
             }
         }
     }
@@ -218,17 +248,17 @@ class CommandHandler {
         return retVal;
     }
 
-    private com.seacon.gdt.xml.objects.data.Component getApplicationDataById(String id, Data data) throws Exception {
+    private com.seacon.gdt.xml.objects.data.Component getComponentDataById(String id, Data data) throws Exception {
         com.seacon.gdt.xml.objects.data.Component retVal = null;
 
-        for (int i = 0; i < data.getApplications().size() && retVal == null; i++) {
-            if (data.getApplications().get(i).getId().equals(id)) {
-                retVal = data.getApplications().get(i);
+        for (int i = 0; i < data.getComponents().size() && retVal == null; i++) {
+            if (data.getComponents().get(i).getId().equals(id)) {
+                retVal = data.getComponents().get(i);
             }
         }
 
         if (retVal == null) {
-            throw new Exception("Not found application data by id! (id: '" + id + "')");
+            throw new Exception("Not found component data by id! (id: '" + id + "')");
         }
         return retVal;
     }

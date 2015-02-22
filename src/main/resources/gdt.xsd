@@ -25,6 +25,7 @@
                                                     <xs:element type="xs:short" name="port" minOccurs="1" maxOccurs="1"/>
                                                     <xs:element type="xs:string" name="user" minOccurs="1" maxOccurs="1"/>
                                                     <xs:element type="xs:string" name="password" minOccurs="1" maxOccurs="1"/>
+                                                    <xs:element type="xs:string" name="domainsrootdir" minOccurs="1" maxOccurs="1"/>
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>

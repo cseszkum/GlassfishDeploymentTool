@@ -13,6 +13,7 @@
                 <port>4849</port>
                 <user>admin</user>
                 <password>plain_txt_password</password>
+                <domainsrootdir>c:\Toolz\glassfish-4.1\glassfish\domains\</domainsrootdir>
             </target>
             <commands>
                 <command id="cmd1" skip="true|false" index="0">
