@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlType;
  *
  * @author Peter
  */
-@XmlType(name = Constants.application, namespace = "org.moooz.servers")
+@XmlType(name = Constants.component, namespace = "org.moooz.servers")
 public class Component implements Serializable {
     public static final long serialVersionUID = 2015013113L;
 

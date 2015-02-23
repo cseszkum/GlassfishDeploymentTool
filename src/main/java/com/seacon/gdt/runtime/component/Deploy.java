@@ -1,6 +1,5 @@
 package com.seacon.gdt.runtime.component;
 
-import com.seacon.gdt.runtime.domain.*;
 import com.seacon.gdt.runtime.AsadminCommandExecuter;
 import com.seacon.gdt.utility.PasswordFileHandler;
 import com.seacon.gdt.xml.objects.servers.Target;
@@ -16,6 +15,7 @@ public class Deploy extends AsadminCommandExecuter {
     public Deploy(String asadminPath, Target targetServer) throws URISyntaxException {
         super(asadminPath, targetServer);
         setProcessInfo("Deploy component");
+        setCommandExecuteIndex(com.seacon.gdt.xml.Constants.CI_COMPONENT_DEPLOY);
     }
 
     public void setParameters(com.seacon.gdt.xml.objects.data.Component componentData, com.seacon.gdt.xml.objects.data.Component parentAppData) throws URISyntaxException, Exception {

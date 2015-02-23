@@ -16,6 +16,7 @@ public class Stop extends AsadminCommandExecuter {
     public Stop(String asadminPath, Target targetServer) {
         super(asadminPath, targetServer);
         setProcessInfo("Stop domain");
+        setCommandExecuteIndex(com.seacon.gdt.xml.Constants.CI_DOMAIN_STOP);
     }
 
     public void setParameters(Domain domainData) throws URISyntaxException {

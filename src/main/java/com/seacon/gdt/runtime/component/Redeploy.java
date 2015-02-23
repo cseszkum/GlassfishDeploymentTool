@@ -15,6 +15,7 @@ public class Redeploy extends AsadminCommandExecuter {
     public Redeploy(String asadminPath, Target targetServer) throws URISyntaxException {
         super(asadminPath, targetServer);
         setProcessInfo("Redeploy component");
+        setCommandExecuteIndex(com.seacon.gdt.xml.Constants.CI_COMPONENT_REDEPLOY);
     }
 
     public void setParameters(com.seacon.gdt.xml.objects.data.Component componentData) throws URISyntaxException, Exception {

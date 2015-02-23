@@ -15,6 +15,7 @@ public class Undeploy extends AsadminCommandExecuter {
     public Undeploy(String asadminPath, Target targetServer) throws URISyntaxException {
         super(asadminPath, targetServer);
         setProcessInfo("Undeploy component");
+        setCommandExecuteIndex(com.seacon.gdt.xml.Constants.CI_COMPONENT_UNDEPLOY);
     }
 
     public void setParameters(com.seacon.gdt.xml.objects.data.Component componentData) throws URISyntaxException {

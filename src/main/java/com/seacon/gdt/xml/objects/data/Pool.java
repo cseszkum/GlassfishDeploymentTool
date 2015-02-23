@@ -75,7 +75,7 @@ public class Pool implements Serializable {
     }
 
     @XmlElementWrapper
-    @XmlElement(name="property")
+    @XmlElement(name=Constants.property)
     public void setProperties(List<Property> properties) {
         this.properties = properties;
     }

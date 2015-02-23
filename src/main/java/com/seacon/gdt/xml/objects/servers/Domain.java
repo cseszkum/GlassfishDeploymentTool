@@ -88,7 +88,7 @@ public class Domain implements Serializable {
     }
 
     @XmlElementWrapper
-    @XmlElement(name="component")
+    @XmlElement(name=Constants.component)
     public void setComponents(List<Component> components) {
         this.components = components;
     }

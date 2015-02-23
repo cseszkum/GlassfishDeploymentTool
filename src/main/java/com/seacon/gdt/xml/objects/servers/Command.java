@@ -80,7 +80,7 @@ public class Command implements Serializable {
     }
 
     @XmlElementWrapper
-    @XmlElement(name = "domain")
+    @XmlElement(name = Constants.domain)
     public void setDomains(List<Domain> domains) {
         this.domains = domains;
     }
@@ -90,7 +90,7 @@ public class Command implements Serializable {
     }
 
     @XmlElementWrapper
-    @XmlElement(name = "connection")
+    @XmlElement(name = Constants.jdbcresource)
     public void setJdbcresources(List<Jdbcresource> jdbcresources) {
         this.jdbcresources = jdbcresources;
     }
@@ -100,7 +100,7 @@ public class Command implements Serializable {
     }
 
     @XmlElementWrapper
-    @XmlElement(name = "pool")
+    @XmlElement(name = Constants.pool)
     public void setPools(List<Pool> pools) {
         this.pools = pools;
     }

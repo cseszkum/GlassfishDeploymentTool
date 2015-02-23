@@ -16,6 +16,7 @@ public class Create extends AsadminCommandExecuter {
     public Create(String asadminPath, Target targetServer) {
         super(asadminPath, targetServer);
         setProcessInfo("Create domain");
+        setCommandExecuteIndex(com.seacon.gdt.xml.Constants.CI_DOMAIN_CREATE);
     }
 
     public void setParameters(Domain domainData) throws URISyntaxException {

@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
  *
  * @author Peter
  */
-@XmlType(name = Constants.connection, namespace = "org.moooz.data")
+@XmlType(name = Constants.jdbcresource, namespace = "org.moooz.data")
 public class Jdbcresource implements Serializable {
     public static final long serialVersionUID = 20150131224L;
     

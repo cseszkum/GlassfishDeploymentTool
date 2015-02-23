@@ -16,6 +16,7 @@ public class Start extends AsadminCommandExecuter {
     public Start(String asadminPath, Target targetServer) {
         super(asadminPath, targetServer);
         setProcessInfo("Start domain");
+        setCommandExecuteIndex(com.seacon.gdt.xml.Constants.CI_DOMAIN_START);
     }
 
     public void setParameters(Domain domainData) throws URISyntaxException {

@@ -17,6 +17,7 @@ public class Create extends AsadminCommandExecuter {
     public Create(String asadminPath, Target targetServer) {
         super(asadminPath, targetServer);
         setProcessInfo("Create JDBC resource");
+        setCommandExecuteIndex(com.seacon.gdt.xml.Constants.CI_JDBCRESOURCE_CREATE);
     }
 
     public void setParameters(Jdbcresource jdbcrData, Pool poolData) throws URISyntaxException {

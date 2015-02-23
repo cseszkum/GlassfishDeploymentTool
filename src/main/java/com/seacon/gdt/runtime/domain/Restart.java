@@ -16,6 +16,7 @@ public class Restart extends AsadminCommandExecuter {
     public Restart(String asadminPath, Target targetServer) {
         super(asadminPath, targetServer);
         setProcessInfo("Restart domain");
+        setCommandExecuteIndex(com.seacon.gdt.xml.Constants.CI_DOMAIN_RESTART);
     }
 
     public void setParameters(Domain domainData) throws URISyntaxException {

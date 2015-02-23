@@ -16,6 +16,7 @@ public class Drop extends AsadminCommandExecuter {
     public Drop(String asadminPath, Target targetServer) {
         super(asadminPath, targetServer);
         setProcessInfo("Drop JDBC resource");
+        setCommandExecuteIndex(com.seacon.gdt.xml.Constants.CI_JDBCRESOURCE_DROP);
     }
 
     public void setParameters(Jdbcresource jdbcrData) throws URISyntaxException {

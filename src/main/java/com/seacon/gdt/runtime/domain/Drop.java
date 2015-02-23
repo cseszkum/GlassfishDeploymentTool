@@ -16,6 +16,7 @@ public class Drop extends AsadminCommandExecuter {
     public Drop(String asadminPath, Target targetServer) {
         super(asadminPath, targetServer);
         setProcessInfo("Drop domain");
+        setCommandExecuteIndex(com.seacon.gdt.xml.Constants.CI_DOMAIN_DROP);
     }
 
     public void setParameters(Domain domainData) throws URISyntaxException {

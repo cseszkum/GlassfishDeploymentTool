@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
  *
  * @author Peter
  */
-@XmlType(name = Constants.application, namespace = "org.moooz.data")
+@XmlType(name = Constants.component, namespace = "org.moooz.data")
 public class Component implements Serializable {
     public static final long serialVersionUID = 20150131223L;
     
@@ -138,7 +138,7 @@ public class Component implements Serializable {
     }
 
     @XmlElementWrapper
-    @XmlElement(name="property")
+    @XmlElement(name=Constants.property)
     public void setProperties(List<Property> properties) {
         this.properties = properties;
     }

@@ -78,7 +78,7 @@ public class Server implements Serializable {
         return target;
     }
 
-    @XmlElement(name="target")
+    @XmlElement(name=Constants.target)
     public void setTarget(Target target) {
         this.target = target;
     }
@@ -88,7 +88,7 @@ public class Server implements Serializable {
     }
 
     @XmlElementWrapper
-    @XmlElement(name="command")
+    @XmlElement(name=Constants.command)
     public void setCommands(List<Command> commands) {
         this.commands = commands;
     }

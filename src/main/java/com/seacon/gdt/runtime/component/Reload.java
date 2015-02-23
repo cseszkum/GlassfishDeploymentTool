@@ -19,6 +19,7 @@ public class Reload extends AsadminCommandExecuter {
     public Reload(String asadminPath, Target targetServer) throws URISyntaxException {
         super(asadminPath, targetServer);
         setProcessInfo("Reload component");
+        setCommandExecuteIndex(com.seacon.gdt.xml.Constants.CI_COMPONENT_RELOAD);
     }
 
     public void setParameters(com.seacon.gdt.xml.objects.data.Component componentData, com.seacon.gdt.xml.objects.data.Domain domainData, String domainsrootdir) throws URISyntaxException, Exception {
