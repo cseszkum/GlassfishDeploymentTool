@@ -90,7 +90,7 @@ public class Command implements Serializable {
     }
 
     @XmlElementWrapper
-    @XmlElement(name = "connection")
+    @XmlElement(name = "jdbcresource")
     public void setJdbcresources(List<Jdbcresource> jdbcresources) {
         this.jdbcresources = jdbcresources;
     }

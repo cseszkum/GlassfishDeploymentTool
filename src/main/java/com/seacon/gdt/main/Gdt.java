@@ -1,5 +1,8 @@
 package com.seacon.gdt.main;
 
+import com.seacon.gdt.main.handle.GdtCommand;
+import com.seacon.gdt.main.handle.GdtCommandPreparator;
+import com.seacon.gdt.main.handle.GdtCommandExecuter;
 import com.seacon.gdt.runtime.server.Version;
 import com.seacon.gdt.utility.GdtLog;
 import com.seacon.gdt.utility.Jaxb;
@@ -13,7 +16,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import javax.xml.XMLConstants;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
@@ -76,16 +81,24 @@ public class Gdt {
                 if (isServerRunning(gdt.getParameters().getAsadminpath(), server.getTarget())) {
                     if (!server.isSkip()) {
                         PasswordFileHandler.createPasswordFile(server.getTarget().getPassword());
+                        
                         Collections.sort(server.getCommands(), new CommandComparator());
+                        List<GdtCommand> commandCollection = new ArrayList<GdtCommand>();
+
+                        GdtLog.info("--- command preparator begin. ---");
                         for (Command command : server.getCommands()) {
                             if (command.isSkip()) {
                                 GdtLog.info("'" + command.getId() + "' command is SKIPPED!");
                             } else {
                                 GdtLog.info("'" + command.getId() + "' command is executing...");
-                                CommandHandler ch = new CommandHandler(gdt.getParameters().getAsadminpath(), server.getTarget());
-                                ch.handle(command, this.gdt.getData());
+                                GdtCommandPreparator cpre = new GdtCommandPreparator(gdt.getParameters().getAsadminpath(), server.getTarget());
+                                commandCollection.addAll(cpre.prepare(command, this.gdt.getData()));
                             }
                         }
+                        GdtLog.info("--- command preparator begin. ---");
+                        
+                        GdtCommandExecuter cexe = GdtCommandExecuter();
+                        cexe.execute(commandCollection);
                     }
                 }
             }
@@ -121,6 +134,10 @@ public class Gdt {
             GdtLog.error("Unreachable server! Is not running?");
         }
         return retVal;
+    }
+
+    private GdtCommandExecuter GdtCommandExecuter() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

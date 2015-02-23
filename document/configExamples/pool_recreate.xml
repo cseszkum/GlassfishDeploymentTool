@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gdt xmlns:urnData="org.moooz.data" xmlns:urnServers="org.moooz.servers">
     <parameters>
-        <name>GDT Example - Create pool</name>
+        <name>GDT Example - Recreate pool</name>
         <lastmodified>2015.02.16</lastmodified>
         <comment>create and +1 attribue - c:\Toolz\glassfish-3.1.2.2\glassfish\bin\asadmin.bat C:\Toolz\glassfish-4.1\bin\asadmin.bat</comment>
-        <asadminpath>C:\Toolz\glassfish-4.1\bin\asadmin.bat</asadminpath>
+        <asadminpath>c:\Toolz\glassfish-3.1.2.2\glassfish\bin\asadmin.bat</asadminpath>
     </parameters>
     <servers>
         <server id="1" skip="false" index="0">
@@ -13,6 +13,7 @@
                 <port>4848</port>
                 <user>admin</user>
                 <password></password>
+                <domainsrootdir>C:\Toolz\glassfish-3.1.2.2\glassfish\domains</domainsrootdir>
             </target>
             <commands>
                 <command id="cmd1" skip="false" index="0">
