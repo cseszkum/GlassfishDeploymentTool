@@ -1,6 +1,6 @@
 package com.seacon.gdt.runtime.jdbcresource;
 
-import com.seacon.gdt.runtime.AsadminCommandExecuter;
+import com.seacon.gdt.runtime.GdtCommand;
 import com.seacon.gdt.utility.PasswordFileHandler;
 import com.seacon.gdt.xml.objects.data.Jdbcresource;
 import com.seacon.gdt.xml.objects.servers.Target;
@@ -11,7 +11,7 @@ import java.net.URISyntaxException;
  * 
  * @author varsanyi.peter
  */
-public class Drop extends AsadminCommandExecuter {
+public class Drop extends GdtCommand {
     
     public Drop(String asadminPath, Target targetServer) {
         super(asadminPath, targetServer);

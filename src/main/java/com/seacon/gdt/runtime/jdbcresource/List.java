@@ -1,6 +1,6 @@
 package com.seacon.gdt.runtime.jdbcresource;
 
-import com.seacon.gdt.runtime.AsadminCommandExecuter;
+import com.seacon.gdt.runtime.GdtCommand;
 import com.seacon.gdt.utility.PasswordFileHandler;
 import com.seacon.gdt.xml.objects.servers.Target;
 import java.net.URISyntaxException;
@@ -10,7 +10,7 @@ import java.net.URISyntaxException;
  *
  * @author varsanyi.peter
  */
-public class List extends AsadminCommandExecuter {
+public class List extends GdtCommand {
 
     public List(String asadminPath, Target targetServer) throws URISyntaxException {
         super(asadminPath, targetServer);

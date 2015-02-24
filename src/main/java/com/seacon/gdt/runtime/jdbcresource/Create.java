@@ -1,6 +1,6 @@
 package com.seacon.gdt.runtime.jdbcresource;
 
-import com.seacon.gdt.runtime.AsadminCommandExecuter;
+import com.seacon.gdt.runtime.GdtCommand;
 import com.seacon.gdt.utility.PasswordFileHandler;
 import com.seacon.gdt.xml.objects.data.Jdbcresource;
 import com.seacon.gdt.xml.objects.data.Pool;
@@ -12,7 +12,7 @@ import java.net.URISyntaxException;
  *
  * @author varsanyi.peter
  */
-public class Create extends AsadminCommandExecuter {
+public class Create extends GdtCommand {
 
     public Create(String asadminPath, Target targetServer) {
         super(asadminPath, targetServer);

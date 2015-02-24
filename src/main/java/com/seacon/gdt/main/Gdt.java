@@ -1,12 +1,13 @@
 package com.seacon.gdt.main;
 
-import com.seacon.gdt.main.handle.GdtCommand;
-import com.seacon.gdt.main.handle.GdtCommandPreparator;
+import com.seacon.gdt.runtime.GdtCommandPreparator;
+import com.seacon.gdt.runtime.GdtCommand;
 import com.seacon.gdt.runtime.server.Version;
 import com.seacon.gdt.utility.GdtLog;
 import com.seacon.gdt.utility.Jaxb;
 import com.seacon.gdt.utility.PasswordFileHandler;
 import com.seacon.gdt.utility.comparators.CommandComparator;
+import com.seacon.gdt.utility.comparators.GdtCommandComparator;
 import com.seacon.gdt.utility.comparators.ServerComparator;
 import com.seacon.gdt.xml.objects.servers.Command;
 import com.seacon.gdt.xml.objects.servers.Server;
@@ -23,7 +24,6 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
-
 
 /**
  *
@@ -95,10 +95,20 @@ public class Gdt {
                                 commandCollection.addAll(cpre.prepare(command, this.gdt.getData()));
                             }
                         }
-                        GdtLog.info("--- command preparator begin. ---");
                         
-                        com.seacon.gdt.main.handle.GdtCommandExecuter cexe = new com.seacon.gdt.main.handle.GdtCommandExecuter();
-                        cexe.execute(commandCollection);
+                        GdtLog.info("--- command preparator begin. ---");
+
+                        if (commandCollection.size() != 0) {
+                            GdtLog.info("--- align commands to right order begin. ---");
+                            Collections.sort(commandCollection, new GdtCommandComparator());
+                            GdtLog.info("--- align commands to right order end. ---");
+
+                            GdtLog.info("--- execute commands begin. ---");
+                            for (GdtCommand gdtCommand : commandCollection) {
+                                gdtCommand.execute();
+                            }
+                            GdtLog.info("--- execute commands end. ---");
+                        }
                     }
                 }
             }

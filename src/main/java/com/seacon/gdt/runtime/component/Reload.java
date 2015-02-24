@@ -1,6 +1,6 @@
 package com.seacon.gdt.runtime.component;
 
-import com.seacon.gdt.runtime.AsadminCommandExecuter;
+import com.seacon.gdt.runtime.GdtCommand;
 import com.seacon.gdt.utility.GdtLog;
 import com.seacon.gdt.utility.PasswordFileHandler;
 import com.seacon.gdt.xml.objects.data.Component;
@@ -14,7 +14,7 @@ import java.net.URISyntaxException;
  *
  * @author varsanyi.peter
  */
-public class Reload extends AsadminCommandExecuter {
+public class Reload extends GdtCommand {
 
     public Reload(String asadminPath, Target targetServer) throws URISyntaxException {
         super(asadminPath, targetServer);

@@ -1,6 +1,6 @@
 package com.seacon.gdt.runtime.domain;
 
-import com.seacon.gdt.runtime.AsadminCommandExecuter;
+import com.seacon.gdt.runtime.GdtCommand;
 import com.seacon.gdt.utility.PasswordFileHandler;
 import com.seacon.gdt.xml.objects.data.Domain;
 import com.seacon.gdt.xml.objects.servers.Target;
@@ -11,7 +11,7 @@ import java.net.URISyntaxException;
  * 
  * @author varsanyi.peter
  */
-public class Restart extends AsadminCommandExecuter {
+public class Restart extends GdtCommand {
     
     public Restart(String asadminPath, Target targetServer) {
         super(asadminPath, targetServer);
