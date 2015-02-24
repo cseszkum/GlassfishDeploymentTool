@@ -38,7 +38,7 @@ public class GdtCommandPreparator {
         handlePools(command.getPools(), data);
         handleJdbcresources(command.getJdbcresources(), data);
         handleDomains(command.getDomains(), data);
-        ...
+        //...
         return retVal;
     }
 
