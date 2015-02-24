@@ -27,6 +27,9 @@ public class PasswordFileHandler {
         File tFile = new File(getPasswordFilePath());
         PrintWriter writer = new PrintWriter(tFile, "UTF-8");
         writer.println("AS_ADMIN_PASSWORD=" + password);
+        writer.println("AS_ADMIN_ADMINPASSWORD=");
+        writer.println("AS_ADMIN_USERPASSWORD=");
+        writer.println("AS_ADMIN_MASTERPASSWORD=");       
         writer.close();
         writer = null;
         tFile = null;

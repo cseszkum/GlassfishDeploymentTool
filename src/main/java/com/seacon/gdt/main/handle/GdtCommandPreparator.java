@@ -1,46 +1,26 @@
-<<<<<<< HEAD:src/main/java/com/seacon/gdt/main/CommandHandler.java
-package com.seacon.gdt.main;
-
-import com.seacon.gdt.runtime.component.Undeploy;
-import com.seacon.gdt.runtime.pool.Create;
-import com.seacon.gdt.runtime.pool.Drop;
-=======
 package com.seacon.gdt.main.handle;
 
->>>>>>> origin/master:src/main/java/com/seacon/gdt/main/handle/GdtCommandPreparator.java
 import com.seacon.gdt.utility.GdtLog;
 import com.seacon.gdt.xml.objects.Data;
 import com.seacon.gdt.xml.objects.servers.Component;
 import com.seacon.gdt.xml.objects.servers.Command;
 import com.seacon.gdt.xml.objects.servers.Jdbcresource;
 import com.seacon.gdt.xml.objects.servers.Domain;
-<<<<<<< HEAD:src/main/java/com/seacon/gdt/main/CommandHandler.java
 import com.seacon.gdt.xml.objects.servers.Pool;
 import com.seacon.gdt.xml.objects.servers.Target;
-=======
-import com.seacon.gdt.xml.objects.servers.Target;
 import java.util.ArrayList;
->>>>>>> origin/master:src/main/java/com/seacon/gdt/main/handle/GdtCommandPreparator.java
 import java.util.List;
 
 /**
  *
  * @author varsanyi.peter
  */
-<<<<<<< HEAD:src/main/java/com/seacon/gdt/main/CommandHandler.java
-class CommandHandler {
-=======
 public class GdtCommandPreparator {
->>>>>>> origin/master:src/main/java/com/seacon/gdt/main/handle/GdtCommandPreparator.java
 
     private String asadminPath;
     private Target targetServer;
 
-<<<<<<< HEAD:src/main/java/com/seacon/gdt/main/CommandHandler.java
-    public CommandHandler(String asadminPath, Target targetServer) {
-=======
     public GdtCommandPreparator(String asadminPath, Target targetServer) {
->>>>>>> origin/master:src/main/java/com/seacon/gdt/main/handle/GdtCommandPreparator.java
         this.asadminPath = asadminPath;
         this.targetServer = targetServer;
     }
@@ -53,12 +33,6 @@ public class GdtCommandPreparator {
      * @param command
      * @param data
      */
-<<<<<<< HEAD:src/main/java/com/seacon/gdt/main/CommandHandler.java
-    public void handle(Command command, Data data) throws Exception {
-        handlePools(command.getPools(), data);
-        handleJdbcresources(command.getJdbcresources(), data);
-        handleDomains(command.getDomains(), data);
-=======
     public List<GdtCommand> prepare(Command command, Data data) throws Exception {
         List<GdtCommand> retVal = new ArrayList<GdtCommand>();
         
@@ -67,7 +41,6 @@ public class GdtCommandPreparator {
         handleDomains(command.getDomains(), data);
         //...
         return retVal;
->>>>>>> origin/master:src/main/java/com/seacon/gdt/main/handle/GdtCommandPreparator.java
     }
 
     private void handlePools(List<com.seacon.gdt.xml.objects.servers.Pool> poolsInCommand, Data data) throws Exception {
