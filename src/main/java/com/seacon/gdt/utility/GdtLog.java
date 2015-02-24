@@ -54,7 +54,7 @@ public class GdtLog {
     }
 
     public static void info(String msg) {
-        logMessage(ch.qos.logback.classic.Level.DEBUG_INT, msg);
+        logMessage(ch.qos.logback.classic.Level.INFO_INT, msg);
     }
 
     public static void debug(String msg) {
@@ -62,10 +62,10 @@ public class GdtLog {
     }
 
     public static void trace(String msg) {
-        logMessage(ch.qos.logback.classic.Level.DEBUG_INT, msg);
+        logMessage(ch.qos.logback.classic.Level.TRACE_INT, msg);
     }
 
     public static void warn(String msg) {
-        logMessage(ch.qos.logback.classic.Level.DEBUG_INT, msg);
+        logMessage(ch.qos.logback.classic.Level.WARN_INT, msg);
     }
 }

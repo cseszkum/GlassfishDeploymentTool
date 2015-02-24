@@ -44,3 +44,7 @@ public class Constants {
     public static final int CI_DOMAIN_STOP = 700;
     
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master

@@ -15,9 +15,16 @@ import java.net.URISyntaxException;
  * "C:/Users/Peter/Documents/GitHub/GlassfishDeploymentTool/document/configExamples/pool_drop.xml"
  * 
  * Work:
+<<<<<<< HEAD
  * "e:/GoogleDrive/NetbeansProjects/GlassfishDeploymentTool/document/gdt_example.xml"
  * "e:/GoogleDrive/NetbeansProjects/GlassfishDeploymentTool/document/configExamples/pool_create.xml"
  * "e:/GoogleDrive/NetbeansProjects/GlassfishDeploymentTool/document/configExamples/pool_drop.xml"
+=======
+ * "e:/Sajat/GitHub/GlassfishDeploymentTool/document/gdt_example.xml"
+ * "e:/Sajat/GitHub/GlassfishDeploymentTool/document/configExamples/pool_create.xml"
+ * "e:/Sajat/GitHub/GlassfishDeploymentTool/document/configExamples/pool_recreate.xml"
+ * "e:/Sajat/GitHub/GlassfishDeploymentTool/document/configExamples/pool_drop.xml"
+>>>>>>> origin/master
  * 
  * @author varsanyi.peter
  * @version 1.0

@@ -3,7 +3,7 @@
     <parameters>
         <name>GDT Example</name>
         <lastmodified>2014.08.21</lastmodified>
-        <comment />
+        <comment>This is a FULL example with valid options.</comment>
         <asadminpath>c:\Toolz\glassfish-3.1.2.2\glassfish\bin\asadmin.bat</asadminpath>
     </parameters>
     <servers>
