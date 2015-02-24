@@ -16,6 +16,7 @@ public class Create extends AsadminCommandExecuter {
     public Create(String asadminPath, Target targetServer) {
         super(asadminPath, targetServer);
         setProcessInfo("Create pool");
+        setCommandExecuteIndex(com.seacon.gdt.xml.Constants.CI_POOL_CREATE);
     }
 
     public void setParameters(Pool poolData) throws URISyntaxException {

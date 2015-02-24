@@ -21,6 +21,7 @@ public class AsadminCommandExecuter {
     private Process process;
     private List<String> parameters;
     private List<String> outputLines;
+    private int commandExecuteIndex;
 
     public AsadminCommandExecuter(String asadminPath, Target targetServer) {
         this.asadminPath = asadminPath;
@@ -28,6 +29,7 @@ public class AsadminCommandExecuter {
         this.parameters = new ArrayList<String>();
         this.outputLines = new ArrayList<String>();
         this.parameters.add(this.asadminPath);
+        this.commandExecuteIndex = -1;
     }
 
     public void execute() throws IOException {
@@ -81,4 +83,11 @@ public class AsadminCommandExecuter {
         return outputLines;
     }
 
+    public int getCommandExecuteIndex() {
+        return commandExecuteIndex;
+    }
+
+    public void setCommandExecuteIndex(int commandExecuteIndex) {
+        this.commandExecuteIndex = commandExecuteIndex;
+    }
 }

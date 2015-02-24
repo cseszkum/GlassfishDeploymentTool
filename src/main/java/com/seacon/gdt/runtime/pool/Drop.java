@@ -16,6 +16,7 @@ public class Drop extends AsadminCommandExecuter {
     public Drop(String asadminPath, Target targetServer) {
         super(asadminPath, targetServer);
         setProcessInfo("Drop pool");
+        setCommandExecuteIndex(com.seacon.gdt.xml.Constants.CI_POOL_DROP);
     }
 
     public void setParameters(Pool poolData) throws URISyntaxException {
