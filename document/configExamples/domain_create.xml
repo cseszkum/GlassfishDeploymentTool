@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gdt xmlns:urnData="org.moooz.data" xmlns:urnServers="org.moooz.servers">
     <parameters>
-        <name>GDT Example - Create pool</name>
-        <lastmodified>2015.02.16</lastmodified>
+        <name>GDT Example - Create Domain</name>
+        <lastmodified>2015.02.25</lastmodified>
         <comment>c:\Toolz\glassfish-3.1.2.2\glassfish\bin\asadmin.bat C:\Toolz\glassfish-4.1\bin\asadmin.bat</comment>
         <asadminpath>c:\Toolz\glassfish-4.1\glassfish\bin\asadmin.bat</asadminpath>
     </parameters>
@@ -17,23 +17,18 @@
             </target>
             <commands>
                 <command id="cmd1" skip="false" index="0">
-                    <pools>
-                        <pool id="1" skip="false" action="drop" />
-                    </pools>
+                    <domains>
+                        <domain id="d1" skip="false" action="create" />
+                    </domains>
                 </command>
             </commands>
         </server>
     </servers>
     <data>
-        <pools>
-            <pool id="1">
-                <jndiName>gdtExamplePool</jndiName>
-                <properties>
-                    <property name="username" value="XXX" />
-                    <property name="host" value="localhost" />
-                    <property name="pssword" value="XXX" />
-                </properties>
-            </pool>
-        </pools>
+        <domains>
+            <domain id="d1">
+                <name>domainGDT</name>
+            </domain>
+        </domains>
     </data>
 </gdt>

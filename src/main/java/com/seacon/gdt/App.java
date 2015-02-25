@@ -27,7 +27,7 @@ import java.net.URISyntaxException;
 public class App {
     
     public static void main(String[] args) {
-        GdtLog.info("-==  Glassfish Deployment Tool begin.  ==-");
+        GdtLog.info("-===  Glassfish Deployment Tool begin.  ===-");
         
         if (isValidParameters(args)) {
             try {
@@ -44,7 +44,7 @@ public class App {
             GdtLog.error(ex);
         }
         
-        GdtLog.info("-==  Glassfish Deployment Tool end.  ==-");
+        GdtLog.info("-===  Glassfish Deployment Tool end.  ===-");
     }
 
     /**

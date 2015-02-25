@@ -57,7 +57,7 @@ public class GdtCommandPreparator {
 
                 Boolean poolExists = poolData.isExists(asadminPath, targetServer);
                 
-                if ((poolCmd.isDrop() && poolExists) || poolCmd.isRecreate()) {
+                if ((poolCmd.isDrop() || poolCmd.isRecreate()) && poolExists) {
                     com.seacon.gdt.runtime.pool.Drop poolDrop = new com.seacon.gdt.runtime.pool.Drop(this.asadminPath, this.targetServer);
                     poolDrop.setParameters(poolData);
                     commands.add(poolDrop);
@@ -65,7 +65,7 @@ public class GdtCommandPreparator {
                     GdtLog.info("drop: SKIPPED.");
                 }
 
-                if ((poolCmd.isCreate() && !poolExists) || poolCmd.isRecreate()) {
+                if ((poolCmd.isCreate() || poolCmd.isRecreate()) && !poolExists) {
                     com.seacon.gdt.runtime.pool.Create poolCreate = new com.seacon.gdt.runtime.pool.Create(this.asadminPath, this.targetServer);
                     poolCreate.setParameters(poolData);
                     commands.add(poolCreate);
@@ -87,7 +87,7 @@ public class GdtCommandPreparator {
 
                 Boolean jdbcrExists = jdbcrData.isExists(asadminPath, targetServer);
                 
-                if ((jdbcrCmd.isDrop() && jdbcrExists) || jdbcrCmd.isRecreate()) {
+                if ((jdbcrCmd.isDrop() || jdbcrCmd.isRecreate()) && jdbcrExists) {
                     com.seacon.gdt.runtime.jdbcresource.Drop jdbcrDrop = new com.seacon.gdt.runtime.jdbcresource.Drop(this.asadminPath, this.targetServer);
                     jdbcrDrop.setParameters(jdbcrData);
                     commands.add(jdbcrDrop);
@@ -95,7 +95,7 @@ public class GdtCommandPreparator {
                     GdtLog.info("drop: SKIPPED.");
                 }
 
-                if ((jdbcrCmd.isCreate() && !jdbcrExists) || jdbcrCmd.isRecreate()) {
+                if ((jdbcrCmd.isCreate() || jdbcrCmd.isRecreate())  && !jdbcrExists) {
                     com.seacon.gdt.xml.objects.data.Pool poolData = getPoolDataById(jdbcrData.getPoolid(), data);
                     com.seacon.gdt.runtime.jdbcresource.Create jdbcrCreate = new com.seacon.gdt.runtime.jdbcresource.Create(this.asadminPath, this.targetServer);
                     jdbcrCreate.setParameters(jdbcrData, poolData);

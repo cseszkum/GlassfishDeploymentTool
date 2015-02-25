@@ -72,7 +72,7 @@ public class Gdt {
     private void execute() throws Exception {
         this.gdt = Jaxb.readXml(this.xmlFilePath);
         if (this.gdt != null) {
-            GdtLog.info("----- GDT execute begins. -----");
+            GdtLog.info("----- GDT execute begin. -----");
             printBeginInfo();
 
             Collections.sort(this.gdt.getServers(), new ServerComparator());
@@ -84,7 +84,7 @@ public class Gdt {
                         Collections.sort(server.getCommands(), new CommandComparator());
                         List<GdtCommand> commandCollection = new ArrayList<GdtCommand>();
 
-                        GdtLog.info("--- command preparator begin. ---");
+                        GdtLog.info("--- C O M M A N D    P R E P A R A T O R    B E G I N. ---");
 
                         for (Command command : server.getCommands()) {
                             if (command.isSkip()) {
@@ -96,18 +96,16 @@ public class Gdt {
                             }
                         }
                         
-                        GdtLog.info("--- command preparator begin. ---");
+                        GdtLog.info("--- C O M M A N D    P R E P A R A T O R    E N D. ---");
 
                         if (commandCollection.size() != 0) {
-                            GdtLog.info("--- align commands to right order begin. ---");
                             Collections.sort(commandCollection, new GdtCommandComparator());
-                            GdtLog.info("--- align commands to right order end. ---");
-
-                            GdtLog.info("--- execute commands begin. ---");
+                            
+                            GdtLog.info("--- C O M M A N D    E X E C U T I O N S    B E G I N. ---");
                             for (GdtCommand gdtCommand : commandCollection) {
                                 gdtCommand.execute();
                             }
-                            GdtLog.info("--- execute commands end. ---");
+                            GdtLog.info("--- C O M M A N D    E X E C U T I O N S    E N D. ---");
                         }
                     }
                 }
