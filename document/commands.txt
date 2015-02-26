@@ -33,4 +33,12 @@ App type and commands:
 - Undeploy      http://docs.oracle.com/cd/E19798-01/821-1758/undeploy-1/index.html                  undeploy                name
 
 
-c:\Toolz\glassfish-4.1\glassfish\bin\asadmin.bat -H localhost -p 4848 -u admin --passwordfile "C:/Users/Peter/Documents/GitHub/GlassfishDeploymentTool/target/classes/password.txt" create-domain domainGDT 
+c:\Toolz\glassfish-4.1\glassfish\bin\asadmin.bat -H localhost -u admin --passwordfile "C:\Users\Peter\Documents\GitHub\GlassfishDeploymentTool\password.txt" create-domain --adminport 5858 --instanceport 6060 domainGDT 
+
+c:\Toolz\glassfish-4.1\glassfish\bin\asadmin.bat -H localhost -u admin -p 4848 --passwordfile "C:\Users\Peter\Documents\GitHub\GlassfishDeploymentTool\password.txt" list-domains
+
+c:\Toolz\glassfish-4.1\glassfish\bin\asadmin.bat -H localhost -u admin -p 4848 --passwordfile "C:\Users\Peter\Documents\GitHub\GlassfishDeploymentTool\password.txt" start-domain domainGDT
+
+c:\Toolz\glassfish-4.1\glassfish\bin\asadmin.bat -H localhost -u admin -p 4848 --passwordfile "C:\Users\Peter\Documents\GitHub\GlassfishDeploymentTool\password.txt" stop-domain domainGDT
+
+c:\Toolz\glassfish-4.1\glassfish\bin\asadmin.bat -H localhost -u admin -p 4848 --passwordfile "C:\Users\Peter\Documents\GitHub\GlassfishDeploymentTool\password.txt" delete-domain domainGDT

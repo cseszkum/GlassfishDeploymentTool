@@ -12,15 +12,7 @@ import java.net.URISyntaxException;
 public class PasswordFileHandler {
     
     public static String getPasswordFilePath() throws URISyntaxException {
-        String osName = System.getProperty("os.name");
-        String retVal = Gdt.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath() + "password.txt";
-        if (osName.toLowerCase().contains("windows")) {
-            retVal = retVal.substring(1);  // cut the first / from string's beginning
-//            if (retVal.contains(" ")) {
-//                retVal = "\"" + retVal + "\"";
-//            }
-        }
-        return retVal;
+        return getDomainPasswordFilePath("");
     }
 
     public static void createPasswordFile(String password) throws Exception {
@@ -41,5 +33,36 @@ public class PasswordFileHandler {
             tFile.delete();
         }
     }
+    
+    public static String getDomainPasswordFilePath(String domainName) throws URISyntaxException {
+        String osName = System.getProperty("os.name");
+        String retVal = Gdt.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath() + "password" + domainName + ".txt";
+        if (osName.toLowerCase().contains("windows")) {
+            retVal = retVal.substring(1);  // cut the first / from string's beginning
+//            if (retVal.contains(" ")) {
+//                retVal = "\"" + retVal + "\"";
+//            }
+        }
+        return retVal;
+    }    
+    
+    public static void createDomainPasswordFile(String domainName, String password) throws Exception {
+        File tFile = new File(getDomainPasswordFilePath(domainName));
+        PrintWriter writer = new PrintWriter(tFile, "UTF-8");
+        writer.println("AS_ADMIN_PASSWORD=" + password);
+        writer.println("AS_ADMIN_ADMINPASSWORD=");
+        writer.println("AS_ADMIN_USERPASSWORD=");
+        writer.println("AS_ADMIN_MASTERPASSWORD=");       
+        writer.close();
+        writer = null;
+        tFile = null;
+    }
+    
+    public static void deleteDomainPasswordFile(String domainName) throws URISyntaxException {
+        File tFile = new File(getDomainPasswordFilePath(domainName));
+        if (tFile.exists()) {
+            tFile.delete();
+        }
+    }    
     
 }

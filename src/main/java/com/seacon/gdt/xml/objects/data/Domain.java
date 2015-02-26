@@ -21,25 +21,46 @@ public class Domain implements Serializable {
     private String id;
     
     private String name;
+    private String adminport;
+    private String instanceport;
+    private String password;
     
     public Domain() {
         this.id = "";
         
         this.name = "";
+        this.adminport = "";
+        this.instanceport = "";
+        this.password = "";
     }
     
-    public Boolean isExists(String asadminPath, Target targetServer) throws IOException, URISyntaxException {
+    public Boolean isExists(String asadminPath, Target targetServer) throws Exception {
         Boolean retVal = false;
         
         com.seacon.gdt.runtime.domain.List listCmd = new com.seacon.gdt.runtime.domain.List(asadminPath, targetServer);
         listCmd.execute();
         
         for (int i = 0; i < listCmd.getOutputLines().size() && retVal == false; i++) {
-            if (listCmd.getOutputLines().get(i).equals(this.name)) {
+            if (listCmd.getOutputLines().get(i).contains(this.name)) {
                 retVal = true;
             }
         }
         GdtLog.info("'" + this.name + "' is exists: " + retVal);
+        return retVal;
+    }  
+    
+    public Boolean isRunning(String asadminPath, Target targetServer) throws Exception {
+        Boolean retVal = true;
+        
+        com.seacon.gdt.runtime.domain.List listCmd = new com.seacon.gdt.runtime.domain.List(asadminPath, targetServer);
+        listCmd.execute();
+        
+        for (int i = 0; i < listCmd.getOutputLines().size() && retVal == false; i++) {
+            if (listCmd.getOutputLines().get(i).contains(this.name) && listCmd.getOutputLines().get(i).contains(" not running")) {
+                retVal = false;
+            }
+        }
+        GdtLog.info("'" + this.name + "' is running: " + retVal);
         return retVal;
     }  
     
@@ -60,6 +81,31 @@ public class Domain implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    
-    
+
+    public String getAdminport() {
+        return adminport;
+    }
+
+    @XmlElement
+    public void setAdminport(String adminport) {
+        this.adminport = adminport;
+    }
+
+    public String getInstanceport() {
+        return instanceport;
+    }
+
+    @XmlElement
+    public void setInstanceport(String instanceport) {
+        this.instanceport = instanceport;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    @XmlElement
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

@@ -32,7 +32,8 @@ public class GdtCommand {
         this.commandExecuteIndex = -1;
     }
 
-    public void execute() throws IOException {
+    public void execute() throws Exception {
+        executeBeforeCommand();
         GdtLog.info("-==  " + processInfo + " command execute begin.  ==-");
         GdtLog.info(getCommandAsString());
         this.outputLines.clear();
@@ -49,8 +50,17 @@ public class GdtCommand {
         
         this.process.destroy();
         GdtLog.info("-==  " + processInfo + " command execute end.  ==-");
+        executeAfterCommand();
     }
 
+    public void executeBeforeCommand() throws Exception {
+        // Override for execte something before command
+    }
+    
+    public void executeAfterCommand() throws Exception {
+        // Override for execte something before command
+    }
+    
     public Target getTargetServer() {
         return targetServer;
     }

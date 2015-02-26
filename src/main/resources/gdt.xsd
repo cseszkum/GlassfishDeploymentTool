@@ -116,7 +116,10 @@
                                         <xs:element name="domain" minOccurs="1" maxOccurs="unbounded">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                    <xs:element type="xs:string" name="name"/>
+                                                    <xs:element type="xs:string" name="name" minOccurs="1" maxOccurs="1"/>
+                                                    <xs:element type="xs:string" name="adminport" minOccurs="0" maxOccurs="1"/>
+                                                    <xs:element type="xs:string" name="instanceport" minOccurs="0" maxOccurs="1"/>
+                                                    <xs:element type="xs:string" name="password" minOccurs="0" maxOccurs="1"/>
                                                 </xs:sequence>
                                                 <xs:attribute type="xs:string" name="id" use="required"/>
                                             </xs:complexType>

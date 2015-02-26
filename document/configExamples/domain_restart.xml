@@ -28,6 +28,8 @@
         <domains>
             <domain id="d1">
                 <name>domainGDT</name>
+                <adminport>5050</adminport>
+                <instanceport>5151</instanceport>
             </domain>
         </domains>
     </data>

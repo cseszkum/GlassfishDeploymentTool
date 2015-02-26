@@ -132,7 +132,7 @@ public class Gdt {
         GdtLog.info("ASADMIN path: " + this.gdt.getParameters().getAsadminpath());
     }
 
-    private boolean isServerRunning(String asadminPath, Target targetServer) throws IOException, URISyntaxException {
+    private boolean isServerRunning(String asadminPath, Target targetServer) throws Exception {
         com.seacon.gdt.runtime.server.Version cmdVer = new Version(asadminPath, targetServer);
         cmdVer.execute();
         Boolean retVal = cmdVer.isServerRunning();

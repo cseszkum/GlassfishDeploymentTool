@@ -1,13 +1,11 @@
 package com.seacon.gdt.runtime;
 
-import com.seacon.gdt.runtime.GdtCommand;
 import com.seacon.gdt.utility.GdtLog;
 import com.seacon.gdt.xml.objects.Data;
 import com.seacon.gdt.xml.objects.servers.Component;
 import com.seacon.gdt.xml.objects.servers.Command;
 import com.seacon.gdt.xml.objects.servers.Jdbcresource;
 import com.seacon.gdt.xml.objects.servers.Domain;
-import com.seacon.gdt.xml.objects.servers.Pool;
 import com.seacon.gdt.xml.objects.servers.Target;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +18,8 @@ import java.util.List;
  */
 public class GdtCommandPreparator {
 
-    private String asadminPath;
-    private Target targetServer;
+    private final String asadminPath;
+    private final Target targetServer;
 
     public GdtCommandPreparator(String asadminPath, Target targetServer) {
         this.asadminPath = asadminPath;
@@ -38,7 +36,7 @@ public class GdtCommandPreparator {
      */
     public List<GdtCommand> prepare(Command command, Data data) throws Exception {
         List<GdtCommand> retVal = new ArrayList<GdtCommand>();
-        
+
         preparePoolCommands(retVal, command.getPools(), data);
         prepareJdbcresourceCommands(retVal, command.getJdbcresources(), data);
         prepareDomainCommands(retVal, command.getDomains(), data);
@@ -56,7 +54,7 @@ public class GdtCommandPreparator {
                 GdtLog.info("Handle pool command. id: '" + poolData.getId() + "' - jndiName: " + poolData.getJndiName());
 
                 Boolean poolExists = poolData.isExists(asadminPath, targetServer);
-                
+
                 if ((poolCmd.isDrop() || poolCmd.isRecreate()) && poolExists) {
                     com.seacon.gdt.runtime.pool.Drop poolDrop = new com.seacon.gdt.runtime.pool.Drop(this.asadminPath, this.targetServer);
                     poolDrop.setParameters(poolData);
@@ -86,7 +84,7 @@ public class GdtCommandPreparator {
                 GdtLog.info("Handle jdbc resource command. id: '" + jdbcrData.getId() + "' - name: " + jdbcrData.getName());
 
                 Boolean jdbcrExists = jdbcrData.isExists(asadminPath, targetServer);
-                
+
                 if ((jdbcrCmd.isDrop() || jdbcrCmd.isRecreate()) && jdbcrExists) {
                     com.seacon.gdt.runtime.jdbcresource.Drop jdbcrDrop = new com.seacon.gdt.runtime.jdbcresource.Drop(this.asadminPath, this.targetServer);
                     jdbcrDrop.setParameters(jdbcrData);
@@ -95,7 +93,7 @@ public class GdtCommandPreparator {
                     GdtLog.info("drop: SKIPPED.");
                 }
 
-                if ((jdbcrCmd.isCreate() || jdbcrCmd.isRecreate())  && !jdbcrExists) {
+                if ((jdbcrCmd.isCreate() || jdbcrCmd.isRecreate()) && !jdbcrExists) {
                     com.seacon.gdt.xml.objects.data.Pool poolData = getPoolDataById(jdbcrData.getPoolid(), data);
                     com.seacon.gdt.runtime.jdbcresource.Create jdbcrCreate = new com.seacon.gdt.runtime.jdbcresource.Create(this.asadminPath, this.targetServer);
                     jdbcrCreate.setParameters(jdbcrData, poolData);
@@ -115,10 +113,14 @@ public class GdtCommandPreparator {
                 com.seacon.gdt.xml.objects.data.Domain domainData = getDomainDataById(domainCmd.getId(), data);
 
                 GdtLog.info("Handle domain command. id: '" + domainData.getId() + "' - name: " + domainData.getName());
-                
+
                 Boolean domainExists = domainData.isExists(asadminPath, targetServer);
-                
+
                 if ((domainCmd.isDrop() && domainExists)) {
+                    com.seacon.gdt.runtime.domain.Stop domainStop = new com.seacon.gdt.runtime.domain.Stop(this.asadminPath, this.targetServer);
+                    domainStop.setParameters(domainData);
+                    commands.add(domainStop);
+
                     com.seacon.gdt.runtime.domain.Drop domainDrop = new com.seacon.gdt.runtime.domain.Drop(this.asadminPath, this.targetServer);
                     domainDrop.setParameters(domainData);
                     commands.add(domainDrop);
@@ -130,11 +132,15 @@ public class GdtCommandPreparator {
                     com.seacon.gdt.runtime.domain.Create domainCreate = new com.seacon.gdt.runtime.domain.Create(this.asadminPath, this.targetServer);
                     domainCreate.setParameters(domainData);
                     commands.add(domainCreate);
+
+                    com.seacon.gdt.runtime.domain.Start domainStart = new com.seacon.gdt.runtime.domain.Start(this.asadminPath, this.targetServer);
+                    domainStart.setParameters(domainData);
+                    commands.add(domainStart);
                 } else {
                     GdtLog.info("create: SKIPPED.");
                 }
 
-                if (domainCmd.isStop() && domainExists) {
+                if (domainCmd.isStop() && domainExists && !isDomainStopInCollection(commands, domainData) && domainData.isRunning(this.asadminPath, this.targetServer)) {
                     com.seacon.gdt.runtime.domain.Stop domainStop = new com.seacon.gdt.runtime.domain.Stop(this.asadminPath, this.targetServer);
                     domainStop.setParameters(domainData);
                     commands.add(domainStop);
@@ -142,7 +148,7 @@ public class GdtCommandPreparator {
                     GdtLog.info("stop: SKIPPED.");
                 }
 
-                if (domainCmd.isStart() && domainExists) {
+                if (domainCmd.isStart() && domainExists && !isDomainStartInCollection(commands, domainData) && !domainData.isRunning(this.asadminPath, this.targetServer)) {
                     com.seacon.gdt.runtime.domain.Start domainStart = new com.seacon.gdt.runtime.domain.Start(this.asadminPath, this.targetServer);
                     domainStart.setParameters(domainData);
                     commands.add(domainStart);
@@ -164,7 +170,7 @@ public class GdtCommandPreparator {
             }
         }
     }
-    
+
     private void prepareComponentCommands(List<GdtCommand> commands, List<Component> componentsInCommand, com.seacon.gdt.xml.objects.data.Domain domainData, Data data) throws Exception {
         for (com.seacon.gdt.xml.objects.servers.Component componentCmd : componentsInCommand) {
             if (componentCmd.isSkip()) {
@@ -173,32 +179,32 @@ public class GdtCommandPreparator {
                 com.seacon.gdt.xml.objects.data.Component componentData = getComponentDataById(componentCmd.getId(), data);
 
                 GdtLog.info("Handle component command. id: '" + componentData.getId() + "' - name: " + componentData.getName() + " - component type: " + componentData.getCtype());
-                
+
                 com.seacon.gdt.xml.objects.data.Component parentAppData = null;
                 if (componentData.isTypeSubcomponent() && componentData.getScappid() != null && !componentData.getScappid().isEmpty()) {
                     parentAppData = getComponentDataById(componentData.getScappid(), data);
                 }
-                
+
                 Boolean componentExists = componentData.isExists(asadminPath, targetServer, parentAppData);
-                
+
                 if (componentCmd.isUndeploy() && componentExists) {
                     com.seacon.gdt.runtime.component.Undeploy componentUndeploy = new com.seacon.gdt.runtime.component.Undeploy(this.asadminPath, this.targetServer);
                     componentUndeploy.setParameters(componentData);
                     commands.add(componentUndeploy);
                 }
-                
+
                 if (componentCmd.isDeploy() && !componentExists) {
                     com.seacon.gdt.runtime.component.Deploy componentDeploy = new com.seacon.gdt.runtime.component.Deploy(this.asadminPath, this.targetServer);
                     componentDeploy.setParameters(componentData, parentAppData);
                     commands.add(componentDeploy);
                 }
-                
+
                 if (componentCmd.isRedeploy() && componentExists) {
                     com.seacon.gdt.runtime.component.Redeploy componentRedeploy = new com.seacon.gdt.runtime.component.Redeploy(this.asadminPath, this.targetServer);
                     componentRedeploy.setParameters(componentData);
                     commands.add(componentRedeploy);
                 }
-                
+
                 if (componentCmd.isReload() && componentExists) {
                     com.seacon.gdt.runtime.component.Reload componentReload = new com.seacon.gdt.runtime.component.Reload(this.asadminPath, this.targetServer);
                     componentReload.setParameters(componentData, domainData, targetServer.getDomainsrootdir());
@@ -265,6 +271,38 @@ public class GdtCommandPreparator {
         if (retVal == null) {
             throw new Exception("Not found component data by id! (id: '" + id + "')");
         }
+        return retVal;
+    }
+
+    private Boolean isDomainStopInCollection(List<GdtCommand> commands, com.seacon.gdt.xml.objects.data.Domain domainData) {
+        Boolean retVal = false;
+
+        for (int i = 0; i < commands.size() && retVal == false; i++) {
+            if (commands.get(i) instanceof com.seacon.gdt.runtime.domain.Stop) {
+                for (int j = 0; j < commands.get(i).getParameters().size() && retVal == false; j++) {
+                    if (commands.get(i).getParameters().get(j).contains(domainData.getName())) {
+                        retVal = true;
+                    }
+                }
+            }
+        }
+
+        return retVal;
+    }
+
+    private boolean isDomainStartInCollection(List<GdtCommand> commands, com.seacon.gdt.xml.objects.data.Domain domainData) {
+        Boolean retVal = false;
+
+        for (int i = 0; i < commands.size() && retVal == false; i++) {
+            if (commands.get(i) instanceof com.seacon.gdt.runtime.domain.Start) {
+                for (int j = 0; j < commands.get(i).getParameters().size() && retVal == false; j++) {
+                    if (commands.get(i).getParameters().get(j).contains(domainData.getName())) {
+                        retVal = true;
+                    }
+                }
+            }
+        }
+
         return retVal;
     }
 

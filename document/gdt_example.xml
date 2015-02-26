@@ -38,6 +38,9 @@
         <domains>
             <domain id="d1">
                 <name>domain1</name>
+                <adminport></adminport>
+                <instanceport></instanceport>
+                <password>if empty -> no password</password>
             </domain>
         </domains>
         <components>

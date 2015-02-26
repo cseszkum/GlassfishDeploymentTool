@@ -37,7 +37,7 @@ public class Pool implements Serializable {
         this.properties = new ArrayList<Property>();
     }
 
-    public Boolean isExists(String asadminPath, Target targetServer) throws IOException, URISyntaxException {
+    public Boolean isExists(String asadminPath, Target targetServer) throws Exception {
         Boolean retVal = false;
         
         com.seacon.gdt.runtime.pool.List listCmd = new com.seacon.gdt.runtime.pool.List(asadminPath, targetServer);
