@@ -24,6 +24,9 @@ public class Domain implements Serializable {
     private String adminport;
     private String instanceport;
     private String password;
+    private String adminpassword;
+    private String userpassword;
+    private String masterpassword;
     
     public Domain() {
         this.id = "";
@@ -32,6 +35,9 @@ public class Domain implements Serializable {
         this.adminport = "";
         this.instanceport = "";
         this.password = "";
+        this.adminpassword = "";
+        this.userpassword = "";
+        this.masterpassword = "";
     }
     
     public Boolean isExists(String asadminPath, Target targetServer) throws Exception {
@@ -107,5 +113,32 @@ public class Domain implements Serializable {
     @XmlElement
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getAdminpassword() {
+        return adminpassword;
+    }
+
+    @XmlElement
+    public void setAdminpassword(String adminpassword) {
+        this.adminpassword = adminpassword;
+    }
+
+    public String getUserpassword() {
+        return userpassword;
+    }
+
+    @XmlElement
+    public void setUserpassword(String userpassword) {
+        this.userpassword = userpassword;
+    }
+
+    public String getMasterpassword() {
+        return masterpassword;
+    }
+
+    @XmlElement
+    public void setMasterpassword(String masterpassword) {
+        this.masterpassword = masterpassword;
     }
 }

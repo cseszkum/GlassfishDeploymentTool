@@ -80,7 +80,10 @@ public class Gdt {
                 printServerInfo(server);
                 if (isServerRunning(gdt.getParameters().getAsadminpath(), server.getTarget())) {
                     if (!server.isSkip()) {
-                        PasswordFileHandler.createPasswordFile(server.getTarget().getPassword());
+                        PasswordFileHandler.createPasswordFile(server.getTarget().getPassword(),
+                                server.getTarget().getAdminpassword(),
+                                server.getTarget().getUserpassword(),
+                                server.getTarget().getMasterpassword());
                         Collections.sort(server.getCommands(), new CommandComparator());
                         List<GdtCommand> commandCollection = new ArrayList<GdtCommand>();
 

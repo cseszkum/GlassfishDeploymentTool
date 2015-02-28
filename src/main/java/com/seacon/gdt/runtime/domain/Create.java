@@ -17,6 +17,9 @@ public class Create extends GdtCommand {
 
     private String domainName;
     private String password;
+    private String adminpassword;
+    private String userpassword;
+    private String masterpassword;
 
     public Create(String asadminPath, Target targetServer) {
         super(asadminPath, targetServer);
@@ -26,7 +29,7 @@ public class Create extends GdtCommand {
 
     @Override
     public void executeBeforeCommand() throws Exception {
-        PasswordFileHandler.createDomainPasswordFile(this.domainName, this.password);
+        PasswordFileHandler.createDomainPasswordFile(this.domainName, this.password, this.adminpassword, this.userpassword, this.masterpassword);
     }
 
     @Override
@@ -37,6 +40,9 @@ public class Create extends GdtCommand {
     public void setParameters(Domain domainData) throws URISyntaxException {
         this.domainName = domainData.getName();
         this.password = domainData.getPassword();
+        this.adminpassword = domainData.getAdminpassword();
+        this.userpassword = domainData.getUserpassword();
+        this.masterpassword = domainData.getMasterpassword();
         
         getParameters().add("-H");
         getParameters().add(getTargetServer().getHost());

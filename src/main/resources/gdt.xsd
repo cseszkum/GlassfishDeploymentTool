@@ -25,6 +25,9 @@
                                                     <xs:element type="xs:short" name="port" minOccurs="1" maxOccurs="1"/>
                                                     <xs:element type="xs:string" name="user" minOccurs="1" maxOccurs="1"/>
                                                     <xs:element type="xs:string" name="password" minOccurs="1" maxOccurs="1"/>
+                                                    <xs:element type="xs:string" name="adminpassword" minOccurs="1" maxOccurs="1"/>
+                                                    <xs:element type="xs:string" name="userpassword" minOccurs="1" maxOccurs="1"/>
+                                                    <xs:element type="xs:string" name="masterpassword" minOccurs="1" maxOccurs="1"/>
                                                     <xs:element type="xs:string" name="domainsrootdir" minOccurs="1" maxOccurs="1"/>
                                                 </xs:sequence>
                                             </xs:complexType>
@@ -120,6 +123,9 @@
                                                     <xs:element type="xs:string" name="adminport" minOccurs="0" maxOccurs="1"/>
                                                     <xs:element type="xs:string" name="instanceport" minOccurs="0" maxOccurs="1"/>
                                                     <xs:element type="xs:string" name="password" minOccurs="0" maxOccurs="1"/>
+                                                    <xs:element type="xs:string" name="adminpassword" minOccurs="0" maxOccurs="1"/>
+                                                    <xs:element type="xs:string" name="userpassword" minOccurs="0" maxOccurs="1"/>
+                                                    <xs:element type="xs:string" name="masterpassword" minOccurs="0" maxOccurs="1"/>
                                                 </xs:sequence>
                                                 <xs:attribute type="xs:string" name="id" use="required"/>
                                             </xs:complexType>

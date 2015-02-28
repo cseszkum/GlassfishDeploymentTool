@@ -33,7 +33,7 @@ App type and commands:
 - Undeploy      http://docs.oracle.com/cd/E19798-01/821-1758/undeploy-1/index.html                  undeploy                name
 
 
-c:\Toolz\glassfish-4.1\glassfish\bin\asadmin.bat -H localhost -u admin --passwordfile "C:\Users\Peter\Documents\GitHub\GlassfishDeploymentTool\password.txt" create-domain --adminport 5858 --instanceport 6060 domainGDT 
+c:\Toolz\glassfish-4.1\glassfish\bin\asadmin.bat -H localhost -u admin --passwordfile "C:\Users\Peter\Documents\GitHub\GlassfishDeploymentTool\password.txt" create-domain --instanceport 6060 domainGDT 
 
 c:\Toolz\glassfish-4.1\glassfish\bin\asadmin.bat -H localhost -u admin -p 4848 --passwordfile "C:\Users\Peter\Documents\GitHub\GlassfishDeploymentTool\password.txt" list-domains
 

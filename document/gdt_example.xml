@@ -13,6 +13,9 @@
                 <port>4849</port>
                 <user>admin</user>
                 <password>plain_txt_password</password>
+                <adminpassword></adminpassword>
+                <userpassword></userpassword>
+                <masterpassword>changeit</masterpassword>
                 <domainsrootdir>c:\Toolz\glassfish-4.1\glassfish\domains\</domainsrootdir>
             </target>
             <commands>
@@ -41,6 +44,9 @@
                 <adminport></adminport>
                 <instanceport></instanceport>
                 <password>if empty -> no password</password>
+                <adminpassword></adminpassword>
+                <userpassword></userpassword>
+                <masterpassword>changeit</masterpassword>
             </domain>
         </domains>
         <components>

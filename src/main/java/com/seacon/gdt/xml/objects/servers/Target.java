@@ -17,6 +17,9 @@ public class Target implements Serializable {
     private String port;
     private String user;
     private String password;
+    private String adminpassword;
+    private String userpassword;
+    private String masterpassword;
     private String domainsrootdir;
     
     public Target() {
@@ -24,6 +27,9 @@ public class Target implements Serializable {
         this.port = "";
         this.user = "";
         this.password = "";
+        this.adminpassword = "";
+        this.userpassword = "";
+        this.masterpassword = "";
         this.domainsrootdir = "";
     }
 
@@ -71,6 +77,31 @@ public class Target implements Serializable {
     public void setDomainsrootdir(String domainsrootdir) {
         this.domainsrootdir = domainsrootdir;
     }
-    
-    
+
+    public String getAdminpassword() {
+        return adminpassword;
+    }
+
+    @XmlElement
+    public void setAdminpassword(String adminpassword) {
+        this.adminpassword = adminpassword;
+    }
+
+    public String getUserpassword() {
+        return userpassword;
+    }
+
+    @XmlElement
+    public void setUserpassword(String userpassword) {
+        this.userpassword = userpassword;
+    }
+
+    public String getMasterpassword() {
+        return masterpassword;
+    }
+
+    @XmlElement
+    public void setMasterpassword(String masterpassword) {
+        this.masterpassword = masterpassword;
+    }
 }

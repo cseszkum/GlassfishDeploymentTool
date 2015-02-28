@@ -15,13 +15,13 @@ public class PasswordFileHandler {
         return getDomainPasswordFilePath("");
     }
 
-    public static void createPasswordFile(String password) throws Exception {
+    public static void createPasswordFile(String password, String apwd, String upwd, String mpwd) throws Exception {
         File tFile = new File(getPasswordFilePath());
         PrintWriter writer = new PrintWriter(tFile, "UTF-8");
         writer.println("AS_ADMIN_PASSWORD=" + password);
-        writer.println("AS_ADMIN_ADMINPASSWORD=");
-        writer.println("AS_ADMIN_USERPASSWORD=");
-        writer.println("AS_ADMIN_MASTERPASSWORD=");       
+        writer.println("AS_ADMIN_ADMINPASSWORD=" + apwd);
+        writer.println("AS_ADMIN_USERPASSWORD=" + upwd);
+        writer.println("AS_ADMIN_MASTERPASSWORD=" + mpwd);       
         writer.close();
         writer = null;
         tFile = null;
@@ -46,13 +46,13 @@ public class PasswordFileHandler {
         return retVal;
     }    
     
-    public static void createDomainPasswordFile(String domainName, String password) throws Exception {
+    public static void createDomainPasswordFile(String domainName, String password, String apwd, String upwd, String mpwd) throws Exception {
         File tFile = new File(getDomainPasswordFilePath(domainName));
         PrintWriter writer = new PrintWriter(tFile, "UTF-8");
         writer.println("AS_ADMIN_PASSWORD=" + password);
-        writer.println("AS_ADMIN_ADMINPASSWORD=");
-        writer.println("AS_ADMIN_USERPASSWORD=");
-        writer.println("AS_ADMIN_MASTERPASSWORD=");       
+        writer.println("AS_ADMIN_ADMINPASSWORD=" + apwd);
+        writer.println("AS_ADMIN_USERPASSWORD=" + upwd);
+        writer.println("AS_ADMIN_MASTERPASSWORD=" + mpwd);       
         writer.close();
         writer = null;
         tFile = null;
