@@ -185,23 +185,23 @@ public class GdtCommandPreparator {
                     parentAppData = getComponentDataById(componentData.getScappid(), data);
                 }
 
-                Boolean componentExists = componentData.isExists(asadminPath, targetServer, parentAppData);
+                Boolean componentExists = componentData.isExists(asadminPath, targetServer, parentAppData, domainData);
 
                 if (componentCmd.isUndeploy() && componentExists) {
                     com.seacon.gdt.runtime.component.Undeploy componentUndeploy = new com.seacon.gdt.runtime.component.Undeploy(this.asadminPath, this.targetServer);
-                    componentUndeploy.setParameters(componentData);
+                    componentUndeploy.setParameters(componentData, domainData);
                     commands.add(componentUndeploy);
                 }
 
                 if (componentCmd.isDeploy() && !componentExists) {
                     com.seacon.gdt.runtime.component.Deploy componentDeploy = new com.seacon.gdt.runtime.component.Deploy(this.asadminPath, this.targetServer);
-                    componentDeploy.setParameters(componentData, parentAppData);
+                    componentDeploy.setParameters(componentData, parentAppData, domainData);
                     commands.add(componentDeploy);
                 }
 
                 if (componentCmd.isRedeploy() && componentExists) {
                     com.seacon.gdt.runtime.component.Redeploy componentRedeploy = new com.seacon.gdt.runtime.component.Redeploy(this.asadminPath, this.targetServer);
-                    componentRedeploy.setParameters(componentData);
+                    componentRedeploy.setParameters(componentData, domainData);
                     commands.add(componentRedeploy);
                 }
 

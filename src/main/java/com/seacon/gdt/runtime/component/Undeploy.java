@@ -18,11 +18,13 @@ public class Undeploy extends GdtCommand {
         setCommandExecuteIndex(com.seacon.gdt.xml.Constants.CI_COMPONENT_UNDEPLOY);
     }
 
-    public void setParameters(com.seacon.gdt.xml.objects.data.Component componentData) throws URISyntaxException {
+    public void setParameters(com.seacon.gdt.xml.objects.data.Component componentData, com.seacon.gdt.xml.objects.data.Domain domainData) throws URISyntaxException {
+        String targetPort = (domainData == null || domainData.getAdminport() == null || domainData.getAdminport().isEmpty()) ? getTargetServer().getPort() : domainData.getAdminport();
+
         getParameters().add("-H");
         getParameters().add(getTargetServer().getHost());
         getParameters().add("-p");
-        getParameters().add(getTargetServer().getPort());
+        getParameters().add(targetPort);
         getParameters().add("-u");
         getParameters().add(getTargetServer().getUser());
         getParameters().add("--passwordfile");

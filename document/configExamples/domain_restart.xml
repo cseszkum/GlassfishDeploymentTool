@@ -13,6 +13,9 @@
                 <port>4848</port>
                 <user>admin</user>
                 <password></password>
+                <adminpassword></adminpassword>
+                <userpassword></userpassword>
+                <masterpassword>changeit</masterpassword>                
                 <domainsrootdir>C:\Toolz\glassfish-4.1\glassfish\domains</domainsrootdir>
             </target>
             <commands>
@@ -30,6 +33,10 @@
                 <name>domainGDT</name>
                 <adminport>5050</adminport>
                 <instanceport>5151</instanceport>
+                <password></password>
+                <adminpassword></adminpassword>
+                <userpassword></userpassword>
+                <masterpassword>changeit</masterpassword>                
             </domain>
         </domains>
     </data>

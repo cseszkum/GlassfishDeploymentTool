@@ -41,15 +41,15 @@ public class Component implements Serializable {
         this.properties = new ArrayList<Property>();
     }
     
-    public Boolean isExists(String asadminPath, Target targetServer, com.seacon.gdt.xml.objects.data.Component parentAppData) throws Exception {
+    public Boolean isExists(String asadminPath, Target targetServer, com.seacon.gdt.xml.objects.data.Component parentAppData, com.seacon.gdt.xml.objects.data.Domain domainData) throws Exception {
         Boolean retVal = false;
         
         com.seacon.gdt.runtime.component.List listCmd = new com.seacon.gdt.runtime.component.List(asadminPath, targetServer);
-        listCmd.setParameters(this, parentAppData);
+        listCmd.setParameters(this, parentAppData, domainData);
         listCmd.execute();
         
         for (int i = 0; i < listCmd.getOutputLines().size() && retVal == false; i++) {
-            if (listCmd.getOutputLines().get(i).equals(this.name)) {
+            if (listCmd.getOutputLines().get(i).contains(this.name + " ")) {
                 retVal = true;
             }
         }
@@ -119,7 +119,7 @@ public class Component implements Serializable {
         return contextroot;
     }
 
-    @XmlAttribute
+    @XmlElement
     public void setContextroot(String contextroot) {
         this.contextroot = contextroot;
     }
@@ -128,7 +128,7 @@ public class Component implements Serializable {
         return path;
     }
 
-    @XmlAttribute
+    @XmlElement
     public void setPath(String path) {
         this.path = path;
     }

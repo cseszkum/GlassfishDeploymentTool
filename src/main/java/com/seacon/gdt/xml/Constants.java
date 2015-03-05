@@ -38,10 +38,10 @@ public class Constants {
     public static final int CI_COMPONENT_UNDEPLOY = 10;
     
     public static final int CI_DOMAIN_CREATE = 5;
-    public static final int CI_DOMAIN_DROP = 600;
-    public static final int CI_DOMAIN_RESTART = 900;
-    public static final int CI_DOMAIN_START = 800;
-    public static final int CI_DOMAIN_STOP = 700;
+    public static final int CI_DOMAIN_DROP = 900;
+    public static final int CI_DOMAIN_RESTART = 800;
+    public static final int CI_DOMAIN_START = 700;
+    public static final int CI_DOMAIN_STOP = 600;
     
 }
 

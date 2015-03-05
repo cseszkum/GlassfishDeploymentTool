@@ -52,7 +52,7 @@
         <components>
             <component id="1" ctype="application|component|subcomponent" scappid="">
                 <name></name>
-                <type></type>
+                <type>osgi|null</type>
                 <contextroot></contextroot>
                 <path>d:\path_to_war\app_name.war</path>
                 <properties>

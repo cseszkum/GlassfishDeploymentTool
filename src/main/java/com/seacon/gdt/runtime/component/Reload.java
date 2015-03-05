@@ -30,10 +30,13 @@ public class Reload extends GdtCommand {
         GdtLog.info("Reload info - the system OS name: " + osName + " - targetDir: " +  targetDir);
         
         if (osName.toLowerCase().contains("windows")) {
-            getParameters().add("echo > " + targetDir + ".reload");
+            getParameters().add("cmd");
+            getParameters().add("/c");
+            getParameters().add("\"echo > " + targetDir + ".reload\"");
         }
         if (osName.toLowerCase().contains("linux") || osName.toLowerCase().contains("unix")) {
-            getParameters().add("touch " + targetDir + ".reload");
+            getParameters().add("touch ");
+            getParameters().add(targetDir + ".reload");
         }
         
     }

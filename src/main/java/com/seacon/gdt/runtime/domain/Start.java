@@ -23,7 +23,7 @@ public class Start extends GdtCommand {
         getParameters().add("-H");
         getParameters().add(getTargetServer().getHost());
         getParameters().add("-p");
-        getParameters().add(getTargetServer().getPort());
+        getParameters().add(domainData.getAdminport());
         getParameters().add("-u");
         getParameters().add(getTargetServer().getUser());
         getParameters().add("--passwordfile");
