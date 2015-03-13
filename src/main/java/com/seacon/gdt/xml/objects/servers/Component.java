@@ -17,11 +17,13 @@ public class Component implements Serializable {
     private String id;
     private String skip;
     private String action;
+    private String force;
     
     public Component() {
         this.id = "";
         this.skip = "";
         this.action = "";
+        this.force = "";
     }
 
     public Boolean isSkip() {
@@ -42,6 +44,10 @@ public class Component implements Serializable {
     
     public Boolean isRedeploy() {
         return (this.action != null && "redeploy".equals(this.action.toLowerCase()));
+    }
+    
+    public Boolean isForce() {
+        return Utility.convertStrToBoolean(this.force);
     }
 
     public String getId() {
@@ -69,6 +75,15 @@ public class Component implements Serializable {
     @XmlAttribute
     public void setAction(String action) {
         this.action = action;
+    }
+
+    public String getForce() {
+        return force;
+    }
+
+    @XmlAttribute
+    public void setForce(String force) {
+        this.force = force;
     }
 
 }

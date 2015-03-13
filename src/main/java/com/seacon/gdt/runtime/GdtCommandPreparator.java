@@ -193,7 +193,7 @@ public class GdtCommandPreparator {
                     commands.add(componentUndeploy);
                 }
 
-                if (componentCmd.isDeploy() && !componentExists) {
+                if (componentCmd.isDeploy() && (!componentExists || componentCmd.isForce())) {
                     com.seacon.gdt.runtime.component.Deploy componentDeploy = new com.seacon.gdt.runtime.component.Deploy(this.asadminPath, this.targetServer);
                     componentDeploy.setParameters(componentData, parentAppData, domainData);
                     commands.add(componentDeploy);

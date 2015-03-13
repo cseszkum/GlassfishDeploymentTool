@@ -23,7 +23,7 @@
                     <domains>
                         <domain id="d1" skip="true|false" action="create|restart|drop|start|stop">
                             <components>
-                                <component id="" skip="true|false" action="deploy|reload|undeploy|redeploy" />
+                                <component id="" skip="true|false" action="deploy|reload|undeploy|redeploy" force="true|false"/>
                             </components>
                         </domain>
                     </domains>

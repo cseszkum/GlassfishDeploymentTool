@@ -52,6 +52,7 @@
                                                                                                             <xs:attribute type="xs:string" name="id" use="required"/>
                                                                                                             <xs:attribute type="xs:string" name="skip" use="required"/>
                                                                                                             <xs:attribute type="xs:string" name="action" use="required"/>
+                                                                                                            <xs:attribute type="xs:string" name="force" use="optional"/>
                                                                                                         </xs:complexType>
                                                                                                     </xs:element>
                                                                                                 </xs:sequence>
