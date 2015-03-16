@@ -1,6 +1,9 @@
 package com.seacon.gdt.utility;
 
-import com.sun.xml.internal.bind.marshaller.NamespacePrefixMapper;
+// linux:???
+//import com.sun.xml.internal.bind.marshaller.NamespacePrefixMapper;
+// windows: ????
+import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
 
 /**
  *
