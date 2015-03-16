@@ -39,9 +39,6 @@ public class PasswordFileHandler {
         String retVal = Gdt.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath() + "password" + domainName + ".txt";
         if (osName.toLowerCase().contains("windows")) {
             retVal = retVal.substring(1);  // cut the first / from string's beginning
-//            if (retVal.contains(" ")) {
-//                retVal = "\"" + retVal + "\"";
-//            }
         }
         return retVal;
     }    

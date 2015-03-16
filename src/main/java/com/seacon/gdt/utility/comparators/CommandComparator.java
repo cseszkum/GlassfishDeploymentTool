@@ -1,7 +1,6 @@
 package com.seacon.gdt.utility.comparators;
 
 import com.seacon.gdt.xml.objects.servers.Command;
-import com.seacon.gdt.xml.objects.servers.Server;
 import java.util.Comparator;
 
 /**

@@ -11,7 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Command preparator class.
+ * 
  * @author varsanyi.peter
  * @since 2015.02.25
  * @version 1.0

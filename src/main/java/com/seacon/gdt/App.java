@@ -7,7 +7,19 @@ import java.io.File;
 import java.net.URISyntaxException;
 
 /**
- * Glassfish Deployment Tool
+ * Glassfish Deployment Tool.
+ * 
+ * A simple, easy tool for reaching Glassfish asadmin functions by an xml config file.
+ * Not implemented ALL asadmin functions!
+ * Implemented functions:
+ * - Pool create, drop.
+ * - JDBC resource create, drop.
+ * - Component deploy, redeploy, delete, reload.
+ * - Domain create, drop, star, stop.
+ * 
+ * Know bugs:
+ * - Reload works just in localhost.
+ * - Domain creation (messages) stucks after the creation.
  * 
  * Home:
  * "C:/Users/Peter/Documents/GitHub/GlassfishDeploymentTool/document/gdt_example.xml"

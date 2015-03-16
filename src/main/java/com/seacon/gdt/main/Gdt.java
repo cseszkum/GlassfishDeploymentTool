@@ -24,9 +24,11 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
 /**
- *
+ * The main class, do main processes.
  *
  * @author varsanyi.peter
+ * @version 1.0
+ * @since 2014.08.21
  */
 public class Gdt {
 
@@ -67,6 +69,15 @@ public class Gdt {
         return retVal;
     }
 
+    /**
+     * The main execution process.
+     * - Process the XML
+     * - Read servers
+     * - Read and prepare the commands
+     * - Sort the right order than execute the commands
+     * 
+     * @throws Exception 
+     */
     private void execute() throws Exception {
         this.gdt = Jaxb.readXml(this.xmlFilePath);
         if (this.gdt != null) {
@@ -133,6 +144,14 @@ public class Gdt {
         GdtLog.info("ASADMIN path: " + this.gdt.getParameters().getAsadminpath());
     }
 
+    /**
+     * Check target server status.
+     * 
+     * @param asadminPath
+     * @param targetServer
+     * @return
+     * @throws Exception 
+     */
     private boolean isServerRunning(String asadminPath, Target targetServer) throws Exception {
         com.seacon.gdt.runtime.server.Version cmdVer = new Version(asadminPath, targetServer);
         cmdVer.execute();

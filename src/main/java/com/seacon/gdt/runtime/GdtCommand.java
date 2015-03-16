@@ -3,15 +3,17 @@ package com.seacon.gdt.runtime;
 import com.seacon.gdt.utility.GdtLog;
 import com.seacon.gdt.xml.objects.servers.Target;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author Peter
+ * The base command execution class.
+ * 
+ * @author varsanyi.peter
+ * @verison 1.0
+ * @since 2015.01.01
  */
 public class GdtCommand {
 
@@ -23,6 +25,12 @@ public class GdtCommand {
     private List<String> outputLines;
     private int commandExecuteIndex;
 
+    /**
+     * A base class for a command.
+     * 
+     * @param asadminPath String - The right asadmin path.
+     * @param targetServer  Target - the target XML node.
+     */
     public GdtCommand(String asadminPath, Target targetServer) {
         this.asadminPath = asadminPath;
         this.targetServer = targetServer;
@@ -32,6 +40,14 @@ public class GdtCommand {
         this.commandExecuteIndex = -1;
     }
 
+    /**
+     * A command execution.
+     * 
+     * Execute command with <code>ProcessBuilder</code>.
+     * The messasges are written to console and to the log file.
+     * 
+     * @throws Exception 
+     */
     public void execute() throws Exception {
         executeBeforeCommand();
         GdtLog.info("-==  " + processInfo + " command execute begin.  ==-");
@@ -53,34 +69,74 @@ public class GdtCommand {
         executeAfterCommand();
     }
 
+    /**
+     * Do someting before command execution.
+     * 
+     * @throws Exception 
+     */
     public void executeBeforeCommand() throws Exception {
         // Override for execte something before command
     }
     
+    /**
+     * Do someting after command execution.
+     * 
+     * @throws Exception 
+     */
     public void executeAfterCommand() throws Exception {
         // Override for execte something before command
     }
     
+    /**
+     * Get <code>Target</code> XML node - the target server data.
+     * @return 
+     */
     public Target getTargetServer() {
         return targetServer;
     }
 
+    /**
+     * Get command lines: the command and parameters.
+     * 
+     * @return 
+     */
     public List<String> getParameters() {
         return parameters;
     }
 
+    /**
+     * Set command lines: the command and parameters.
+     * 
+     * @param parameters 
+     */
     public void setParameters(List<String> parameters) {
         this.parameters = parameters;
     }
 
+    /**
+     * Get process information string.
+     * 
+     * @return 
+     */
     public String getProcessInfo() {
         return processInfo;
     }
 
+    /**
+     * Set process information string.
+     * 
+     * @param processInfo 
+     */
     public void setProcessInfo(String processInfo) {
         this.processInfo = processInfo;
     }
 
+    /**
+     * Get command as a string.
+     * For print to the log and to the console.
+     * 
+     * @return 
+     */
     private String getCommandAsString() {
         String retVal = "";
         for (String s : this.parameters) {
@@ -89,14 +145,29 @@ public class GdtCommand {
         return retVal;
     }
 
+    /**
+     * Get given output lines for examine outputs, the command result.
+     * 
+     * @return 
+     */
     public List<String> getOutputLines() {
         return outputLines;
     }
 
+    /**
+     * Get the command execution index.
+     * 
+     * @return 
+     */
     public int getCommandExecuteIndex() {
         return commandExecuteIndex;
     }
 
+    /**
+     * Set the command execution index.
+     * 
+     * @param commandExecuteIndex 
+     */
     public void setCommandExecuteIndex(int commandExecuteIndex) {
         this.commandExecuteIndex = commandExecuteIndex;
     }

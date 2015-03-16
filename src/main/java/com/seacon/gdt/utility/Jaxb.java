@@ -18,8 +18,6 @@ public class Jaxb {
         try {
             JAXBContext context = JAXBContext.newInstance(Gdt.class);
             Unmarshaller un = context.createUnmarshaller();
-            //Gdt emp = (Gdt) un.unmarshal(new File("E:\\GoogleDrive\\NetbeansProjects\\GlassfishDeploymentTool\\document\\gdt_example.xml"));
-            //Gdt emp = (Gdt) un.unmarshal(new File("C:\\Users\\Peter\\Google Drive\\NetbeansProjects\\GlassfishDeploymentTool\\document\\gdt_example.xml"));
             Gdt emp = (Gdt) un.unmarshal(new File(xmlPath));
             return emp;
         } catch (JAXBException e) {
@@ -37,7 +35,6 @@ public class Jaxb {
         try {
             JAXBContext context = JAXBContext.newInstance(Gdt.class);
             Marshaller m = context.createMarshaller();
-            //for pretty-print XML in JAXB
             m.setProperty("com.sun.xml.internal.bind.namespacePrefixMapper", new JaxbNamespaceMapper());
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             m.setProperty(Marshaller.JAXB_FRAGMENT, true);
